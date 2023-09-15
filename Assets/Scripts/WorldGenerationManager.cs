@@ -15,16 +15,16 @@ public class WorldGenerationManager : MonoBehaviour
 
     private void Awake()
     {
-        WorldObjectsManager.lastPlatformController = startPlatform;
-        WorldObjectsManager.platformPrefab = platformPrefab;
-        WorldObjectsManager.platformFallHeight = platformFallHeight;
+        SingletonManager.WorldObjects.lastPlatformController = startPlatform;
+        SingletonManager.WorldObjects.platformPrefab = platformPrefab;
+        SingletonManager.WorldObjects.platformFallHeight = platformFallHeight;
 
-        WorldObjectsManager.instanciatedPlatforms.Clear();
+        SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
     }
 
     private void Update()
     {
-        if (WorldObjectsManager.instanciatedPlatforms.Count < maxPlatformsCount)
-            WorldObjectsManager.lastPlatformController.GenerateNextPlatform();
+        if (SingletonManager.WorldObjects.instanciatedPlatforms.Count < maxPlatformsCount)
+            SingletonManager.WorldObjects.lastPlatformController.GenerateNextPlatform();
     }
 }

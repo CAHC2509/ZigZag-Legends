@@ -25,7 +25,7 @@ public class PlatformController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.localPosition.y < WorldObjectsManager.platformFallHeight)
+        if (transform.localPosition.y < SingletonManager.WorldObjects.platformFallHeight)
             DestroyThisPlatform();
 
         distanteToPlayer = Vector3.Distance(playerTransform.position, transform.position);
@@ -37,7 +37,8 @@ public class PlatformController : MonoBehaviour
     private void MakePlatformFall()
     {
         rb.isKinematic = false;
-        WorldObjectsManager.instanciatedPlatforms.Remove(gameObject);
+        SingletonManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
+        SingletonManager.PointsSystem.playerPoints++;
 
         hasFallen = true;
     }
@@ -45,10 +46,10 @@ public class PlatformController : MonoBehaviour
     public void GenerateNextPlatform()
     {
         int randomIndex = Random.Range(0, generationPoints.Count);
-        GameObject instanciatedPlatform = Instantiate(WorldObjectsManager.platformPrefab, generationPoints[randomIndex].position, Quaternion.identity, null);
-        WorldObjectsManager.instanciatedPlatforms.Add(instanciatedPlatform);
+        GameObject instanciatedPlatform = Instantiate(SingletonManager.WorldObjects.platformPrefab, generationPoints[randomIndex].position, Quaternion.identity, null);
+        SingletonManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
 
-        WorldObjectsManager.lastPlatformController = instanciatedPlatform.GetComponent<PlatformController>();
+        SingletonManager.WorldObjects.lastPlatformController = instanciatedPlatform.GetComponent<PlatformController>();
     }
 
     private void DestroyThisPlatform()
