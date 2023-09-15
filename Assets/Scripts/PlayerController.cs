@@ -98,6 +98,9 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
+        int actualPoints = SingletonManager.PointsSystem.matchPoints;
+        PlayerPrefsUtility.SetPlayerPoints(actualPoints);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 }

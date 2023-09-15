@@ -10,7 +10,7 @@ public class PointsManager : MonoBehaviour
     private void Start()
     {
         SingletonManager.PointsSystem.pointsManager = this;
-        // Get points for playerprefs
-        // Asign points to singleton
+        playerPoints = PlayerPrefsUtility.GetPlayerPoints();
+        SingletonManager.PointsSystem.matchPoints = playerPoints;
     }
 }

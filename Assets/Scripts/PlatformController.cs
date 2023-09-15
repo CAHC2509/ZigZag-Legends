@@ -38,7 +38,7 @@ public class PlatformController : MonoBehaviour
     {
         rb.isKinematic = false;
         SingletonManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
-        SingletonManager.PointsSystem.playerPoints++;
+        SingletonManager.PointsSystem.matchPoints++;
 
         hasFallen = true;
     }
