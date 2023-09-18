@@ -43,10 +43,15 @@ public class PlatformController : MonoBehaviour
         hasFallen = true;
     }
 
-    public void GenerateNextPlatform()
+    public void GenerateNextPlatform(bool generateSpecialPlatform = false)
     {
+        GameObject platform = SingletonManager.WorldObjects.platformPrefab;
+
+        if (generateSpecialPlatform)
+            platform = SingletonManager.WorldObjects.specialPlatformPrefab;
+
         int randomIndex = Random.Range(0, generationPoints.Count);
-        GameObject instanciatedPlatform = Instantiate(SingletonManager.WorldObjects.platformPrefab, generationPoints[randomIndex].position, Quaternion.identity, null);
+        GameObject instanciatedPlatform = Instantiate(platform, generationPoints[randomIndex].position, Quaternion.identity, null);
         SingletonManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
 
         SingletonManager.WorldObjects.lastPlatformController = instanciatedPlatform.GetComponent<PlatformController>();

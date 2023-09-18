@@ -1384,9 +1384,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlatformsCount: 25
+  specialPlatformSpawnRate: 25
+  platformFallHeight: -25
   startPlatform: {fileID: 2114627938}
   platformPrefab: {fileID: 5538365775823056964, guid: c0c8c84a2dcf9d0408839030dba3198f, type: 3}
-  platformFallHeight: -25
+  specialPlatformPrefab: {fileID: 5538365775823056964, guid: 91c10b03e4194894eab699922a98c4a9, type: 3}
 --- !u!114 &1721572987
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public static class SingletonManager
     {        
         public static PlatformController lastPlatformController;
         public static GameObject platformPrefab;
+        public static GameObject specialPlatformPrefab;
         public static float platformFallHeight;
 
         public static List<GameObject> instanciatedPlatforms = new List<GameObject>();
