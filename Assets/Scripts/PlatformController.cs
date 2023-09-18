@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     [SerializeField]
+    private float coinYOffset = 3f;
+    [SerializeField]
     private float maxPlayerDistance = 5f;
     [SerializeField]
     private Rigidbody rb;
@@ -38,17 +40,13 @@ public class PlatformController : MonoBehaviour
     {
         rb.isKinematic = false;
         SingletonManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
-        SingletonManager.PointsSystem.matchPoints++;
 
         hasFallen = true;
     }
 
-    public void GenerateNextPlatform(bool generateSpecialPlatform = false)
+    public void GenerateNextPlatform()
     {
         GameObject platform = SingletonManager.WorldObjects.platformPrefab;
-
-        if (generateSpecialPlatform)
-            platform = SingletonManager.WorldObjects.specialPlatformPrefab;
 
         int randomIndex = Random.Range(0, generationPoints.Count);
         GameObject instanciatedPlatform = Instantiate(platform, generationPoints[randomIndex].position, Quaternion.identity, null);
@@ -60,6 +58,14 @@ public class PlatformController : MonoBehaviour
     private void DestroyThisPlatform()
     {
         Destroy(gameObject);
+    }
+
+    public void SpawnCoin()
+    {
+        Vector3 spawnPosition = transform.position;
+        spawnPosition.y += coinYOffset;
+
+        Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity, null);
     }
 
     private void OnCollisionExit(Collision collision)

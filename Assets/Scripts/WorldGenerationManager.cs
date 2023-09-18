@@ -15,7 +15,7 @@ public class WorldGenerationManager : MonoBehaviour
     [SerializeField]
     private GameObject platformPrefab;
     [SerializeField]
-    private GameObject specialPlatformPrefab;
+    private GameObject coinPrefab;
 
     private int generatedPlatformsCount = 0;  // Counter for generated platforms
 
@@ -24,7 +24,7 @@ public class WorldGenerationManager : MonoBehaviour
         // Initialize references and clear the list of instantiated platforms
         SingletonManager.WorldObjects.lastPlatformController = startPlatform;
         SingletonManager.WorldObjects.platformPrefab = platformPrefab;
-        SingletonManager.WorldObjects.specialPlatformPrefab = specialPlatformPrefab;
+        SingletonManager.WorldObjects.coinPrefab = coinPrefab;
         SingletonManager.WorldObjects.platformFallHeight = platformFallHeight;
         SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
     }
@@ -33,17 +33,14 @@ public class WorldGenerationManager : MonoBehaviour
     {
         if (SingletonManager.WorldObjects.instanciatedPlatforms.Count < maxPlatformsCount)
         {
+            SingletonManager.WorldObjects.lastPlatformController.GenerateNextPlatform();
+
             // Check if we've generated enough platforms and spawn a special one
             if (generatedPlatformsCount >= specialPlatformSpawnRate)
             {
-                // Generate a special platform
-                SingletonManager.WorldObjects.lastPlatformController.GenerateNextPlatform(true);
+                // Generate coin
+                SingletonManager.WorldObjects.lastPlatformController.SpawnCoin();
                 generatedPlatformsCount = 0;
-            }
-            else
-            {
-                // Generate a normal platform
-                SingletonManager.WorldObjects.lastPlatformController.GenerateNextPlatform();
             }
 
             generatedPlatformsCount++;  // Increment the counter

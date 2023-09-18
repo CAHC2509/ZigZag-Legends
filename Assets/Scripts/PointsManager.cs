@@ -11,6 +11,6 @@ public class PointsManager : MonoBehaviour
     {
         SingletonManager.PointsSystem.pointsManager = this;
         playerPoints = PlayerPrefsUtility.GetPlayerPoints();
-        SingletonManager.PointsSystem.matchPoints = playerPoints;
+        SingletonManager.PointsSystem.matchPoints = 0;
     }
 }
