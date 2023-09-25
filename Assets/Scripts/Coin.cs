@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SingletonManager.PointsSystem.matchPoints++;
+            SingletonManager.PointsSystem.pointsManager.AddPoints();
             Destroy(gameObject);
         }
     }

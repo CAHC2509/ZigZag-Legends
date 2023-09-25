@@ -17,6 +17,5 @@ public static class SingletonManager
     public static class PointsSystem
     {
         public static PointsManager pointsManager;
-        public static int matchPoints;
     }
 }
