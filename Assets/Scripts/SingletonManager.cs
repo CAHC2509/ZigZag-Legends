@@ -14,8 +14,9 @@ public static class SingletonManager
         public static List<GameObject> instanciatedPlatforms = new List<GameObject>();
     }
 
-    public static class PointsSystem
+    public static class Managers
     {
+        public static HighScoreManager highScoreManager;
         public static PointsManager pointsManager;
     }
 }

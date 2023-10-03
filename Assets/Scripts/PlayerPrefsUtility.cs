@@ -6,6 +6,7 @@ using UnityEngine;
 public static class PlayerPrefsUtility
 {
     private const string PLAYERPOINTSKEY = "PlayerPoints";
+    private const string HIGHSCOREKEY = "PlayerHighScore";
 
     /// <summary>
     /// Add more points to the existing in PlayerPrefs
@@ -28,4 +29,16 @@ public static class PlayerPrefsUtility
     /// </summary>
     /// <returns>Player's points amount</returns>
     public static int GetPlayerPoints() => PlayerPrefs.GetInt(PLAYERPOINTSKEY, 0);
+
+    /// <summary>
+    /// Set a new high score and saves it in PlayerPrefs
+    /// </summary>
+    /// <param name="newHighScore"></param>
+    public static void SetHighScore(int newHighScore) => PlayerPrefs.SetInt(HIGHSCOREKEY, newHighScore);
+
+    /// <summary>
+    /// Get the player's high score from the PlayerPrefs
+    /// </summary>
+    /// <returns>Player's high score</returns>
+    public static int GetHighScore() => PlayerPrefs.GetInt(HIGHSCOREKEY, 0);
 }

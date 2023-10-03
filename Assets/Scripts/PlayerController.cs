@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
+        SingletonManager.Managers.highScoreManager.CheckHighScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 

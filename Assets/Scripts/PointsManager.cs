@@ -12,7 +12,7 @@ public class PointsManager : MonoBehaviour
 
     private void Start()
     {
-        SingletonManager.PointsSystem.pointsManager = this;
+        SingletonManager.Managers.pointsManager = this;
         playerPoints = PlayerPrefsUtility.GetPlayerPoints();
         pointsText.text = playerPoints.ToString();
     }

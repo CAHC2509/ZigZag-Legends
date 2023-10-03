@@ -39,7 +39,9 @@ public class PlatformController : MonoBehaviour
     private void MakePlatformFall()
     {
         rb.isKinematic = false;
+
         SingletonManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
+        SingletonManager.Managers.highScoreManager.UpdateActualScore();
 
         hasFallen = true;
     }
