@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -13,8 +14,10 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 5f;
     [SerializeField]
     private float fallHeight = -5f;
+    [SerializeField]
+    private InputActionReference playerInputAction;
 
-    [Space, Header("Main settings")]
+    [Space, Header("Speed settings")]
     [SerializeField]
     private float speedIncreaseValue = 0.1f;
     [SerializeField]
@@ -22,8 +25,13 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving = false;
     private bool isMovingLeft = false;
-    private bool hasDetectedTouch = false;
     private float startTime;
+
+    private void OnEnable()
+    {
+        playerInputAction.action.Enable();
+        playerInputAction.action.performed += PlayerInputDetected;
+    }
 
     private void Start()
     {
@@ -36,22 +44,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
-#if UNITY_ANDROID
-        // Detect player input (touch).
-        if (Input.touchCount > 0 && !hasDetectedTouch)
-            InputRecognized();
-
-        if (Input.touchCount == 0)
-            hasDetectedTouch = false;
-#endif
-
-#if UNITY_EDITOR
-        // Detect player input (click).
-        if (Input.GetMouseButtonDown(0))
-            InputRecognized();
-#endif
-
         if (transform.localPosition.y < fallHeight)
             Death();
 
@@ -76,10 +68,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void InputRecognized()
+    private void PlayerInputDetected(InputAction.CallbackContext context)
     {
-        hasDetectedTouch = true;
-
         if (isMoving)
             ChangeDirection();
         else
@@ -99,5 +89,11 @@ public class PlayerController : MonoBehaviour
     private void Death()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+    }
+
+    private void OnDisable()
+    {
+        playerInputAction.action.Disable();
+        playerInputAction.action.performed -= PlayerInputDetected;
     }
 }
