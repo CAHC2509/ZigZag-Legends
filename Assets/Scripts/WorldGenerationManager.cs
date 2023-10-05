@@ -16,17 +16,26 @@ public class WorldGenerationManager : MonoBehaviour
     private GameObject platformPrefab;
     [SerializeField]
     private GameObject coinPrefab;
+    [SerializeField]
+    private GameObject coinParticlesPrefab;
 
     private int generatedPlatformsCount = 0;  // Counter for generated platforms
 
     private void Awake()
     {
-        // Initialize references and clear the list of instantiated platforms
+        // Initialize platform references and clear the list of instantiated platforms
         SingletonManager.WorldObjects.lastPlatformController = startPlatform;
         SingletonManager.WorldObjects.platformPrefab = platformPrefab;
-        SingletonManager.WorldObjects.coinPrefab = coinPrefab;
         SingletonManager.WorldObjects.platformFallHeight = platformFallHeight;
         SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
+
+        // Initialize coin and particles references
+        GameObject particles = Instantiate(coinParticlesPrefab);
+        ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
+
+        SingletonManager.WorldObjects.coinParticlesPrefab = particles;
+        SingletonManager.WorldObjects.coinParticleSystem = particleSystem;
+        SingletonManager.WorldObjects.coinPrefab = coinPrefab;
     }
 
     private void Update()

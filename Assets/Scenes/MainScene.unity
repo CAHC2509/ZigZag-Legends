@@ -2245,6 +2245,7 @@ MonoBehaviour:
   startPlatform: {fileID: 2114627938}
   platformPrefab: {fileID: 5538365775823056964, guid: c0c8c84a2dcf9d0408839030dba3198f, type: 3}
   coinPrefab: {fileID: 3231458640331517823, guid: 9c504b547680a5b448f8140cebc6f71d, type: 3}
+  coinParticlesPrefab: {fileID: 968380719656044553, guid: d493188641a7023418a5d4a955b3a6e6, type: 3}
 --- !u!114 &1721572987
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -67,7 +67,8 @@ public class PlatformController : MonoBehaviour
         Vector3 spawnPosition = transform.position;
         spawnPosition.y += coinYOffset;
 
-        Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity, null);
+        GameObject coin = Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
+        coin.transform.SetParent(transform);
     }
 
     private void OnCollisionExit(Collision collision)
