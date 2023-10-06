@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speedIncreaseInterval = 10f;
 
+    [Space, Header("Wheels settings")]
+    [SerializeField]
+    private List<RotateObject> wheels;
+
     private bool isMoving = false;
     private bool isMovingLeft = false;
     private float startTime;
@@ -71,12 +75,16 @@ public class PlayerController : MonoBehaviour
     private void PlayerInputDetected(InputAction.CallbackContext context)
     {
         if (isMoving)
+        {
             ChangeDirection();
+        }
         else
+        {
             isMoving = true;
+            ChangeWheelsActiveState(true);
+        }
     }
 
-    // Change the player's direction.
     private void ChangeDirection()
     {
         isMovingLeft = !isMovingLeft;
@@ -84,6 +92,12 @@ public class PlayerController : MonoBehaviour
 
         // Rotate the player to face the new direction.
         transform.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    private void ChangeWheelsActiveState(bool newState)
+    {
+        foreach (RotateObject wheel in wheels)
+            wheel.enabled = newState;
     }
 
     private void Death()
