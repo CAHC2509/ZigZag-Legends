@@ -11,17 +11,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     [SerializeField]
-    private float moveSpeed = 5f;
+    private float moveSpeed = 2.5f;
     [SerializeField]
-    private float fallHeight = -5f;
+    private float fallHeight = -3.5f;
     [SerializeField]
     private InputActionReference playerInputAction;
 
     [Space, Header("Speed settings")]
     [SerializeField]
-    private float speedIncreaseValue = 0.1f;
+    private float speedIncreaseValue = 0.25f;
     [SerializeField]
-    private float speedIncreaseInterval = 10f;
+    private float speedIncreaseInterval = 7.5f;
 
     [Space, Header("Wheels settings")]
     [SerializeField]
