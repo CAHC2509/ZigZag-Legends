@@ -7,9 +7,9 @@ public class CameraFollow : MonoBehaviour
 
     private Transform target;
 
-    private void Start()
+    private void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        SingletonManager.Player.cameraFollow = this;
     }
 
     private void LateUpdate()
@@ -26,4 +26,6 @@ public class CameraFollow : MonoBehaviour
             transform.LookAt(target);
         }
     }
+
+    public void FindPlayer() => target = GameObject.FindGameObjectWithTag("Player").transform;
 }

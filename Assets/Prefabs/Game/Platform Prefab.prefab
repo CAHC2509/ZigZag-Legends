@@ -197,3 +197,4 @@ MonoBehaviour:
   generationPoints:
   - {fileID: 2788658717442712381}
   - {fileID: 4286783831884683298}
+  isStartingPlatform: 0

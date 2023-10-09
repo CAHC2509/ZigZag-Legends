@@ -13,16 +13,18 @@ public class PlatformController : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]
     private List<Transform> generationPoints;
-
+    [SerializeField]
+    private bool isStartingPlatform = false;
 
     private Transform playerTransform;
     private float distanteToPlayer;
     private bool canFall = false;
     private bool hasFallen = false;
 
-    private void Start()
+    private void Awake()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        if (isStartingPlatform)
+            SingletonManager.WorldObjects.instanciatedPlatformControllers.Add(this);
     }
 
     private void Update()
@@ -30,10 +32,13 @@ public class PlatformController : MonoBehaviour
         if (transform.localPosition.y < SingletonManager.WorldObjects.platformFallHeight)
             DestroyThisPlatform();
 
-        distanteToPlayer = Vector3.Distance(playerTransform.position, transform.position);
+        if (playerTransform != null)
+        {
+            distanteToPlayer = Vector3.Distance(playerTransform.position, transform.position);
 
-        if (distanteToPlayer > maxPlayerDistance && canFall && !hasFallen)
-            MakePlatformFall();
+            if (distanteToPlayer > maxPlayerDistance && canFall && !hasFallen)
+                MakePlatformFall();
+        }
     }
 
     private void MakePlatformFall()
@@ -41,6 +46,7 @@ public class PlatformController : MonoBehaviour
         rb.isKinematic = false;
 
         SingletonManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
+        SingletonManager.WorldObjects.instanciatedPlatformControllers.Remove(this);
         SingletonManager.Managers.highScoreManager.UpdateActualScore();
 
         hasFallen = true;
@@ -54,12 +60,9 @@ public class PlatformController : MonoBehaviour
         GameObject instanciatedPlatform = Instantiate(platform, generationPoints[randomIndex].position, Quaternion.identity, null);
         SingletonManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
 
-        SingletonManager.WorldObjects.lastPlatformController = instanciatedPlatform.GetComponent<PlatformController>();
-    }
-
-    private void DestroyThisPlatform()
-    {
-        Destroy(gameObject);
+        PlatformController instanciatedPlatformController = instanciatedPlatform.GetComponent<PlatformController>();
+        SingletonManager.WorldObjects.instanciatedPlatformControllers.Add(instanciatedPlatformController);
+        SingletonManager.WorldObjects.lastPlatformController = instanciatedPlatformController;
     }
 
     public void SpawnCoin()
@@ -70,6 +73,10 @@ public class PlatformController : MonoBehaviour
         GameObject coin = Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
         coin.transform.SetParent(transform);
     }
+
+    public void FindPlayer() => playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+    private void DestroyThisPlatform() => Destroy(gameObject);
 
     private void OnCollisionExit(Collision collision)
     {

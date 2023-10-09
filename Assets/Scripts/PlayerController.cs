@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour
         playerInputAction.action.performed += PlayerInputDetected;
     }
 
+    private void Awake()
+    {
+        SingletonManager.Player.playerController = this;
+    }
+
     private void Start()
     {
         if (rb == null)

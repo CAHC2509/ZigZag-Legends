@@ -4,6 +4,15 @@ using UnityEngine;
 
 public static class SingletonManager
 {
+    public static class Player
+    {
+        // Camera
+        public static CameraFollow cameraFollow;
+
+        // Player
+        public static PlayerController playerController;
+    }
+
     public static class WorldObjects
     {
         // Coins
@@ -16,10 +25,12 @@ public static class SingletonManager
         public static GameObject platformPrefab;
         public static float platformFallHeight;
         public static List<GameObject> instanciatedPlatforms = new List<GameObject>();
+        public static List<PlatformController> instanciatedPlatformControllers = new List<PlatformController>();
     }
 
     public static class Managers
     {
+        public static GameManager gameManager;
         public static HighScoreManager highScoreManager;
         public static PointsManager pointsManager;
     }
