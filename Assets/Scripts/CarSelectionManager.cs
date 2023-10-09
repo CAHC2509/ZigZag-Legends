@@ -4,30 +4,34 @@ using UnityEngine;
 
 public class CarSelectionManager : MonoBehaviour
 {
+    [Header("Menu settings")]
     [SerializeField]
     private GameObject leftButton;
     [SerializeField]
     private GameObject rightButton;
     [SerializeField]
-    private List<GameObject> cars;
+    private List<GameObject> menuCars;
+
+    [Space, Header("Car spawn settings")]
+    [SerializeField]
+    private Transform spawnPoint;
+    [SerializeField]
+    private List<GameObject> inGameCars;
 
     private int currentCarIndex = 0; // Index of the currently car displayed
 
-    private void Start()
-    {
-        UpdateButtonsVisibility();
-    }
+    private void Start() => UpdateButtonsVisibility();
 
     /// <summary>
     /// Display the next car in the sequence if available.
     /// </summary>
     public void NextCar()
     {
-        if (currentCarIndex < cars.Count - 1)
+        if (currentCarIndex < menuCars.Count - 1)
         {
-            cars[currentCarIndex].SetActive(false);
+            menuCars[currentCarIndex].SetActive(false);
             currentCarIndex++;
-            cars[currentCarIndex].SetActive(true);
+            menuCars[currentCarIndex].SetActive(true);
 
             UpdateButtonsVisibility();
         }
@@ -40,9 +44,9 @@ public class CarSelectionManager : MonoBehaviour
     {
         if (currentCarIndex > 0)
         {
-            cars[currentCarIndex].SetActive(false);
+            menuCars[currentCarIndex].SetActive(false);
             currentCarIndex--;
-            cars[currentCarIndex].SetActive(true);
+            menuCars[currentCarIndex].SetActive(true);
 
             UpdateButtonsVisibility();
         }
@@ -54,6 +58,20 @@ public class CarSelectionManager : MonoBehaviour
     private void UpdateButtonsVisibility()
     {
         leftButton.SetActive(currentCarIndex > 0);
-        rightButton.SetActive(currentCarIndex < cars.Count - 1);
+        rightButton.SetActive(currentCarIndex < menuCars.Count - 1);
+    }
+
+    /// <summary>
+    /// Select and spawn the actual car showed in the menu
+    /// </summary>
+    public void SelectCar()
+    {
+        Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
+
+        SingletonManager.Player.cameraFollow.FindPlayer();
+
+        List<PlatformController> platformControllers = SingletonManager.WorldObjects.instanciatedPlatformControllers;
+        foreach (PlatformController platformController in platformControllers)
+            platformController.FindPlayer();
     }
 }

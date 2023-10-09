@@ -587,8 +587,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1721572984}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1721572989}
+        m_TargetAssemblyTypeName: CarSelectionManager, Assembly-CSharp
         m_MethodName: SelectCar
         m_Mode: 1
         m_Arguments:
@@ -1493,7 +1493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &784772477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1509,10 +1509,10 @@ RectTransform:
   m_Father: {fileID: 119841049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -50}
-  m_SizeDelta: {x: 245.30215, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &784772478
 MonoBehaviour:
@@ -2768,6 +2768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sierra
       objectReference: {fileID: 0}
+    - target: {fileID: 9049235932812351666, guid: 31651ff7375e40744bf5e3630a94718c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9049235932812444818, guid: 31651ff7375e40744bf5e3630a94718c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3134,16 +3138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978b29d261ee3154893b867e084b7562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cars:
-  - {fileID: 3053870289540359314, guid: 715b2cc458fa6f442b6394e9823a9c20, type: 3}
-  - {fileID: 5361937634211049125, guid: faa1247169830224abb35d88f93261d2, type: 3}
-  - {fileID: 4843814228776943529, guid: 7b947dc55e152704886d0b73dc2addf3, type: 3}
-  - {fileID: 7687279201677187417, guid: e96bbe3e1d9e50049b17f485938ce88c, type: 3}
-  - {fileID: 4724169714227782134, guid: 276f8102c04cde440b0e4ee8c92f71e4, type: 3}
-  - {fileID: 7285072085954420916, guid: 9711906fe8d42f74ba23ef34fb05377f, type: 3}
-  - {fileID: 9049235932812351666, guid: 1cf338d28821964458b5ca571f0cc455, type: 3}
-  - {fileID: 1334124873760418051, guid: c4ca71ea1f07d5d46afe0198412c722b, type: 3}
-  spawnPoint: {fileID: 1933480228}
 --- !u!4 &1721572985
 Transform:
   m_ObjectHideFlags: 0
@@ -3220,7 +3214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftButton: {fileID: 784772476}
   rightButton: {fileID: 1779654749}
-  cars:
+  menuCars:
   - {fileID: 1515348011}
   - {fileID: 1877451193}
   - {fileID: 1569481060}
@@ -3229,6 +3223,16 @@ MonoBehaviour:
   - {fileID: 1839886802}
   - {fileID: 1350910082}
   - {fileID: 987187029}
+  spawnPoint: {fileID: 1933480228}
+  inGameCars:
+  - {fileID: 9049235932812351666, guid: 1cf338d28821964458b5ca571f0cc455, type: 3}
+  - {fileID: 5361937634211049125, guid: faa1247169830224abb35d88f93261d2, type: 3}
+  - {fileID: 4724169714227782134, guid: 276f8102c04cde440b0e4ee8c92f71e4, type: 3}
+  - {fileID: 3053870289540359314, guid: 715b2cc458fa6f442b6394e9823a9c20, type: 3}
+  - {fileID: 7285072085954420916, guid: 9711906fe8d42f74ba23ef34fb05377f, type: 3}
+  - {fileID: 7687279201677187417, guid: e96bbe3e1d9e50049b17f485938ce88c, type: 3}
+  - {fileID: 4843814228776943529, guid: 7b947dc55e152704886d0b73dc2addf3, type: 3}
+  - {fileID: 1334124873760418051, guid: c4ca71ea1f07d5d46afe0198412c722b, type: 3}
 --- !u!1001 &1733882014
 PrefabInstance:
   m_ObjectHideFlags: 0
