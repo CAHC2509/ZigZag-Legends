@@ -74,9 +74,13 @@ public class PlatformController : MonoBehaviour
         coin.transform.SetParent(transform);
     }
 
-    public void FindPlayer() => playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
     private void DestroyThisPlatform() => Destroy(gameObject);
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+            playerTransform = collision.transform;
+    }
 
     private void OnCollisionExit(Collision collision)
     {

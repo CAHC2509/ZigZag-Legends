@@ -67,11 +67,6 @@ public class CarSelectionManager : MonoBehaviour
     public void SelectCar()
     {
         Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
-
         SingletonManager.Player.cameraFollow.FindPlayer();
-
-        List<PlatformController> platformControllers = SingletonManager.WorldObjects.instanciatedPlatformControllers;
-        foreach (PlatformController platformController in platformControllers)
-            platformController.FindPlayer();
     }
 }
