@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [Space, Header("Wheels settings")]
     [SerializeField]
     private List<RotateObject> wheels;
+    [SerializeField]
+    private List<GameObject> wheelsParticles;
 
     private bool isMoving = false;
     private bool isMovingLeft = false;
@@ -37,10 +39,7 @@ public class PlayerController : MonoBehaviour
         playerInputAction.action.performed += PlayerInputDetected;
     }
 
-    private void Awake()
-    {
-        SingletonManager.Player.playerController = this;
-    }
+    private void Awake() => SingletonManager.Player.playerController = this;
 
     private void Start()
     {
@@ -101,8 +100,13 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeWheelsActiveState(bool newState)
     {
+        // Change wheels rotation enable state
         foreach (RotateObject wheel in wheels)
             wheel.enabled = newState;
+
+        // Change wheels particles active state
+        foreach (GameObject wheelParticles in wheelsParticles)
+            wheelParticles.SetActive(newState);
     }
 
     private void Death()
