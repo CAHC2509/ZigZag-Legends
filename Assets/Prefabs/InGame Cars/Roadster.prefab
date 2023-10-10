@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tireParticles: {fileID: 444462838322493256}
+  stopParticlesDelay: 0.25
 --- !u!1 &7285072085954420914
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,8 +277,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.35, y: 2.5, z: 8.25}
-  m_Center: {x: -0.15, y: 0.875, z: -0.475}
+  m_Size: {x: 3.2, y: 2.5, z: 8.25}
+  m_Center: {x: -0.15, y: 0.9, z: -0.475}
 --- !u!54 &7285072085954264211
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -530,6 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tireParticles: {fileID: 6513411226756271590}
+  stopParticlesDelay: 0.25
 --- !u!1 &7285072085954420926
 GameObject:
   m_ObjectHideFlags: 0
