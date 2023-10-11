@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
@@ -29,9 +28,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private List<GameObject> wheelsParticles;
 
+    [Space, Header("Death settings")]
+    [SerializeField]
+    private GameObject explossionParticlesPrefab;
+
+    private float startTime;
     private bool isMoving = false;
     private bool isMovingLeft = false;
-    private float startTime;
+    private bool hasFallen = false;
 
     private void OnEnable()
     {
@@ -52,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.localPosition.y < fallHeight)
+        if (transform.localPosition.y < fallHeight && !hasFallen)
             Death();
 
         // Calculate elapsed time since the game started.
@@ -111,8 +115,20 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
+        hasFallen = true;
+
         SingletonManager.Managers.highScoreManager.CheckHighScore();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        SingletonManager.Player.cameraFollow.StopFollowPlayer();
+        
+        Instantiate(explossionParticlesPrefab, transform.position, Quaternion.identity, null);
+        StartCoroutine(RestartSceneWithDelay(3f));
+    }
+
+    private IEnumerator RestartSceneWithDelay(float delayTime = 0f)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        SingletonManager.Managers.gameManager.RestartScene();
     }
 
     private void OnDisable()

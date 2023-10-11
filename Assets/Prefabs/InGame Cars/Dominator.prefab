@@ -339,7 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5361937634211049128}
   moveSpeed: 2.5
-  fallHeight: -3.5
+  fallHeight: -2.5
   playerInputAction: {fileID: -8891954518127802704, guid: da8685c4f48c5074f836a5c60444ca99, type: 3}
   speedIncreaseValue: 0.25
   speedIncreaseInterval: 7.5
@@ -351,6 +351,7 @@ MonoBehaviour:
   wheelsParticles:
   - {fileID: 3582813591649910267}
   - {fileID: 5835435855066385012}
+  explossionParticlesPrefab: {fileID: 5789263034803597006, guid: f8cd755589174a3498d167f142de098e, type: 3}
 --- !u!1 &5361937634211049127
 GameObject:
   m_ObjectHideFlags: 0

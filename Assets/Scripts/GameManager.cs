@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Death screen settings")]
+    [SerializeField]
+    private GameObject deathScreen;
+
     private void Awake()
     {
         Application.targetFrameRate = 90;
@@ -11,6 +16,11 @@ public class GameManager : MonoBehaviour
 
         SingletonManager.Managers.gameManager = this;
     }
+
+    /// <summary>
+    /// Executes some custom events (called when the player falls)
+    /// </summary>
+    public void PlayerDeath() => deathScreen.SetActive(true);
 
     /// <summary>
     /// Pause the game
@@ -21,4 +31,9 @@ public class GameManager : MonoBehaviour
     /// Unpause the game
     /// </summary>
     public void Continue() => Time.timeScale = 1;
+
+    /// <summary>
+    /// Restart the current scene
+    /// </summary>
+    public void RestartScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 }
