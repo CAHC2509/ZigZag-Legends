@@ -15,6 +15,8 @@ public class PlatformController : MonoBehaviour
     private List<Transform> generationPoints;
     [SerializeField]
     private bool isStartingPlatform = false;
+    [SerializeField]
+    private bool isLastStartingPlatform = false;
 
     private Transform playerTransform;
     private float distanteToPlayer;
@@ -25,6 +27,15 @@ public class PlatformController : MonoBehaviour
     {
         if (isStartingPlatform)
             SingletonManager.WorldObjects.instanciatedPlatformControllers.Add(this);
+    }
+
+    private void Start()
+    {
+        if (isLastStartingPlatform)
+        {
+            SingletonManager.WorldObjects.lastPlatformController = this;
+            GenerateNextPlatform();
+        }
     }
 
     private void Update()
@@ -41,6 +52,9 @@ public class PlatformController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Make the platform fall by disable it's rigidbody kinematic state
+    /// </summary>
     private void MakePlatformFall()
     {
         rb.isKinematic = false;
@@ -52,24 +66,35 @@ public class PlatformController : MonoBehaviour
         hasFallen = true;
     }
 
+    /// <summary>
+    /// Generate the next platform on a random spawnpoint
+    /// </summary>
     public void GenerateNextPlatform()
     {
+        // Cache the platform prefab
         GameObject platform = SingletonManager.WorldObjects.platformPrefab;
 
+        // Generate the next platform in a random place (spawnpoint)
         int randomIndex = Random.Range(0, generationPoints.Count);
         GameObject instanciatedPlatform = Instantiate(platform, generationPoints[randomIndex].position, Quaternion.identity, null);
         SingletonManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
 
+        // Set the previous spawned platform as last platform controller
         PlatformController instanciatedPlatformController = instanciatedPlatform.GetComponent<PlatformController>();
         SingletonManager.WorldObjects.instanciatedPlatformControllers.Add(instanciatedPlatformController);
         SingletonManager.WorldObjects.lastPlatformController = instanciatedPlatformController;
     }
 
+    /// <summary>
+    /// Spawns a coin on top of the platform
+    /// </summary>
     public void SpawnCoin()
     {
+        // Set the offset to spawn the coin
         Vector3 spawnPosition = transform.position;
         spawnPosition.y += coinYOffset;
 
+        // Spawn coin and set as child of the current platform
         GameObject coin = Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
         coin.transform.SetParent(transform);
     }

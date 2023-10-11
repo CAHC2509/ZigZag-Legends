@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WorldGenerationManager : MonoBehaviour
 {
+    [Header("Platforms settings")]
     [SerializeField]
     private int maxPlatformsCount = 25;
     [SerializeField]
@@ -11,9 +12,11 @@ public class WorldGenerationManager : MonoBehaviour
     [SerializeField]
     private float platformFallHeight = -25f;
     [SerializeField]
-    private PlatformController startPlatform;
-    [SerializeField]
     private GameObject platformPrefab;
+    [SerializeField]
+    private GameObject initialPlatformsPrefab;
+
+    [Space, Header("Coins settings")]
     [SerializeField]
     private GameObject coinPrefab;
     [SerializeField]
@@ -24,10 +27,10 @@ public class WorldGenerationManager : MonoBehaviour
     private void Awake()
     {
         // Initialize platform references and clear the list of instantiated platforms
-        SingletonManager.WorldObjects.lastPlatformController = startPlatform;
         SingletonManager.WorldObjects.platformPrefab = platformPrefab;
         SingletonManager.WorldObjects.platformFallHeight = platformFallHeight;
         SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
+        SingletonManager.WorldObjects.instanciatedPlatformControllers.Clear();
 
         // Initialize coin and particles references
         GameObject particles = Instantiate(coinParticlesPrefab);
@@ -40,7 +43,11 @@ public class WorldGenerationManager : MonoBehaviour
 
     private void Update()
     {
-        if (SingletonManager.WorldObjects.instanciatedPlatforms.Count < maxPlatformsCount)
+        // Cache the conditions to improve performance and readability
+        bool shouldGenerateNewPlatform = SingletonManager.WorldObjects.instanciatedPlatforms.Count < maxPlatformsCount;
+        bool lastPlatformControllerIsNull = SingletonManager.WorldObjects.lastPlatformController == null;
+
+        if (shouldGenerateNewPlatform && !lastPlatformControllerIsNull)
         {
             SingletonManager.WorldObjects.lastPlatformController.GenerateNextPlatform();
 
@@ -54,5 +61,35 @@ public class WorldGenerationManager : MonoBehaviour
 
             generatedPlatformsCount++;  // Increment the counter
         }
+    }
+
+    /// <summary>
+    /// Spawn the initial corridor of platforms
+    /// </summary>
+    public void SpawnInitialPlatforms() => Instantiate(initialPlatformsPrefab);
+
+    /// <summary>
+    /// Destroy all the existing objects with tag "Platform"
+    /// </summary>
+    public void DestroyExistingPlatforms()
+    {
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
+
+        foreach (GameObject platform in platforms)
+            Destroy(platform);
+
+        ResetWordGenerationValues();
+    }
+
+    /// <summary>
+    /// Resets the generation values for prepare the next world generation
+    /// </summary>
+    private void ResetWordGenerationValues()
+    {
+        SingletonManager.WorldObjects.lastPlatformController = null;
+        SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
+        SingletonManager.WorldObjects.instanciatedPlatformControllers.Clear();
+
+        generatedPlatformsCount = 0;
     }
 }

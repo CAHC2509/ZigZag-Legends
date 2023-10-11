@@ -20,6 +20,14 @@ public class HighScoreManager : MonoBehaviour
         highScoreText.text = $"Best: {PlayerPrefsUtility.GetHighScore()}";
     }
 
+    public void CheckHighScore()
+    {
+        int actualHighScore = PlayerPrefsUtility.GetHighScore();
+
+        if (actualScore > actualHighScore)
+            UpdateHighScore(actualScore);
+    }
+
     public void UpdateActualScore()
     {
         actualScore++;
@@ -32,11 +40,9 @@ public class HighScoreManager : MonoBehaviour
         highScoreText.text = $"Best: {newHighScore}";
     }
 
-    public void CheckHighScore()
+    public void ResetActualScore()
     {
-        int actualHighScore = PlayerPrefsUtility.GetHighScore();
-
-        if (actualScore > actualHighScore)
-            UpdateHighScore(actualScore);
+        actualScore = 0;
+        actualScoreText.text = $"Actual: {actualScore}";
     }
 }

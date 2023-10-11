@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Platform
   - PlatformTrigger
-  - Menu
   layers:
   - Default
   - TransparentFX
