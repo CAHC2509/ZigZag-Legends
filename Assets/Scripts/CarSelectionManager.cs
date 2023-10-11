@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CarSelectionManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class CarSelectionManager : MonoBehaviour
     private Transform spawnPoint;
     [SerializeField]
     private List<GameObject> inGameCars;
+    [Space, SerializeField]
+    private UnityEvent onCarSelected;
 
     private int currentCarIndex = 0; // Index of the currently car displayed
 
@@ -62,11 +65,12 @@ public class CarSelectionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Select and spawn the actual car showed in the menu
+    /// Spawn the actual car showed in the menu
     /// </summary>
-    public void SelectCar()
-    {
-        Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
-        SingletonManager.Player.cameraFollow.FindPlayer();
-    }
+    public void SpawnCarSelected() => Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
+
+    /// <summary>
+    /// Execute the corresponding events when the player selects a car
+    /// </summary>
+    public void SelectCar() => onCarSelected.Invoke();
 }

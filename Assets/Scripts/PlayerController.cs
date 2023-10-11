@@ -117,18 +117,10 @@ public class PlayerController : MonoBehaviour
     {
         hasFallen = true;
 
-        SingletonManager.Managers.highScoreManager.CheckHighScore();
-        SingletonManager.Player.cameraFollow.StopFollowPlayer();
-        
         Instantiate(explossionParticlesPrefab, transform.position, Quaternion.identity, null);
-        StartCoroutine(RestartSceneWithDelay(3f));
-    }
+        SingletonManager.Managers.gameManager.PlayerDeath();
 
-    private IEnumerator RestartSceneWithDelay(float delayTime = 0f)
-    {
-        yield return new WaitForSeconds(delayTime);
-
-        SingletonManager.Managers.gameManager.RestartScene();
+        Destroy(gameObject);
     }
 
     private void OnDisable()

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Death screen settings")]
-    [SerializeField]
-    private GameObject deathScreen;
+    [Space, SerializeField]
+    private UnityEvent onPlayerDeath;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Executes some custom events (called when the player falls)
     /// </summary>
-    public void PlayerDeath() => deathScreen.SetActive(true);
+    public void PlayerDeath() => onPlayerDeath.Invoke();
 
     /// <summary>
     /// Pause the game
