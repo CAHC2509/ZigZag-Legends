@@ -7,6 +7,7 @@ public static class PlayerPrefsUtility
 {
     private const string PLAYERPOINTSKEY = "PlayerPoints";
     private const string HIGHSCOREKEY = "PlayerHighScore";
+    private const string CARSELECTEDKEY = "CarSelected";
 
     /// <summary>
     /// Add more points to the existing in PlayerPrefs
@@ -41,4 +42,16 @@ public static class PlayerPrefsUtility
     /// </summary>
     /// <returns>Player's high score</returns>
     public static int GetHighScore() => PlayerPrefs.GetInt(HIGHSCOREKEY, 0);
+
+    /// <summary>
+    /// Set a new car selected index and saves it in PlayerPrefs
+    /// </summary>
+    /// <param name="index"></param>
+    public static void SetCarSelectedIndex(int index) => PlayerPrefs.SetInt(CARSELECTEDKEY, index);
+
+    /// <summary>
+    /// Get the car selected index from PlayerPrefs
+    /// </summary>
+    /// <returns></returns>
+    public static int GetCarSelectedIndex() => PlayerPrefs.GetInt(CARSELECTEDKEY, 0);
 }

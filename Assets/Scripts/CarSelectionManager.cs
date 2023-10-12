@@ -23,7 +23,14 @@ public class CarSelectionManager : MonoBehaviour
 
     private int currentCarIndex = 0; // Index of the currently car displayed
 
-    private void Start() => UpdateButtonsVisibility();
+    private void Start()
+    {
+        currentCarIndex = PlayerPrefsUtility.GetCarSelectedIndex();
+        ShowLastSelectedCar();
+        UpdateButtonsVisibility();
+    }
+
+    private void ShowLastSelectedCar() => menuCars[currentCarIndex].SetActive(true);
 
     /// <summary>
     /// Display the next car in the sequence if available.
@@ -67,7 +74,11 @@ public class CarSelectionManager : MonoBehaviour
     /// <summary>
     /// Spawn the actual car showed in the menu
     /// </summary>
-    public void SpawnCarSelected() => Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
+    public void SpawnCarSelected()
+    {
+        PlayerPrefsUtility.SetCarSelectedIndex(currentCarIndex);
+        Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
+    }
 
     /// <summary>
     /// Execute the corresponding events when the player selects a car

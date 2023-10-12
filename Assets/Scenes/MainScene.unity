@@ -2433,6 +2433,10 @@ PrefabInstance:
       value: Sierra
       objectReference: {fileID: 0}
     - target: {fileID: 9049235932812351666, guid: 31651ff7375e40744bf5e3630a94718c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9049235932812351666, guid: 31651ff7375e40744bf5e3630a94718c, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}

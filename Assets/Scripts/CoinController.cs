@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class Coin : MonoBehaviour
+public class CoinController : MonoBehaviour
 {
     private GameObject coinParticlesPrefab;
     private ParticleSystem coinParticleSystem;

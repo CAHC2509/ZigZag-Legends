@@ -16,8 +16,6 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset = Vector3.zero;
     private Transform target = null;
 
-    private void Awake() => SingletonManager.Player.cameraFollow = this;
-
     private void LateUpdate()
     {
         if (target != null && offset == playerOffset)
