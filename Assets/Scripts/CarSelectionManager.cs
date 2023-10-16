@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,18 @@ public class CarSelectionManager : MonoBehaviour
     private GameObject rightButton;
     [SerializeField]
     private List<GameObject> menuCars;
+
+    [Space, Header("Purchasable cars settings")]
+    [SerializeField]
+    private GameObject buyPopUp;
+    [SerializeField]
+    private TextMeshProUGUI popUpText;
+    [SerializeField]
+    private GameObject selectCarButton;
+    [SerializeField]
+    private GameObject buyCarButton;
+    [SerializeField]
+    private List<UnlockableCar> carsUnlockableScripts;
 
     [Space, Header("Car spawn settings")]
     [SerializeField]
@@ -26,6 +39,7 @@ public class CarSelectionManager : MonoBehaviour
     private void Start()
     {
         currentCarIndex = PlayerPrefsUtility.GetCarSelectedIndex();
+
         ShowLastSelectedCar();
         UpdateButtonsVisibility();
     }
@@ -67,8 +81,14 @@ public class CarSelectionManager : MonoBehaviour
     /// </summary>
     private void UpdateButtonsVisibility()
     {
+        // Left and right buttons
         leftButton.SetActive(currentCarIndex > 0);
         rightButton.SetActive(currentCarIndex < menuCars.Count - 1);
+
+        // Select and buy car car buttons
+        CarData currentCarData = carsUnlockableScripts[currentCarIndex].GetCarData();
+        selectCarButton.SetActive(currentCarData.unlocked);
+        buyCarButton.SetActive(!currentCarData.unlocked);
     }
 
     /// <summary>
@@ -79,6 +99,25 @@ public class CarSelectionManager : MonoBehaviour
         PlayerPrefsUtility.SetCarSelectedIndex(currentCarIndex);
         Instantiate(inGameCars[currentCarIndex], spawnPoint.position, spawnPoint.rotation, null);
     }
+
+    /// <summary>
+    /// Shows a popup with the car name and price to confirm the purchase
+    /// </summary>
+    public void ShowPurchasePopUp()
+    {
+        // Cache car data
+        string carName = carsUnlockableScripts[currentCarIndex].transform.name;
+        int carPrice = carsUnlockableScripts[currentCarIndex].GetCarData().price;
+
+        // Show popup
+        popUpText.text = $"Buy {carName}\nfor {carPrice}?";
+        buyPopUp.SetActive(true);
+    }
+
+    /// <summary>
+    /// Request the current car purchase
+    /// </summary>
+    public void PurchaseCar() => SingletonManager.Managers.carUnlockManager.RequestCarPurchase(carsUnlockableScripts[currentCarIndex].GetCarData());
 
     /// <summary>
     /// Execute the corresponding events when the player selects a car

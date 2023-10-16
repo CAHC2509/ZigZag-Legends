@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 7285072085954264215}
   - component: {fileID: 7285072085954264211}
   - component: {fileID: -7434855056641075122}
+  - component: {fileID: -5892728746391976833}
   m_Layer: 0
   m_Name: Roadster
   m_TagString: Untagged
@@ -248,6 +249,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 90
   rotationAxis: 1
+--- !u!114 &-5892728746391976833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7285072085954420916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792c2542e1f174e409f8f8a4ac76ec41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carData: {fileID: 11400000, guid: 6c7d488fd0024fa40aee2bef7cf9ed1d, type: 2}
 --- !u!1 &7285072085954420918
 GameObject:
   m_ObjectHideFlags: 0

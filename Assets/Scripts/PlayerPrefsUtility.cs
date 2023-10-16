@@ -54,4 +54,18 @@ public static class PlayerPrefsUtility
     /// </summary>
     /// <returns></returns>
     public static int GetCarSelectedIndex() => PlayerPrefs.GetInt(CARSELECTEDKEY, 0);
+
+    /// <summary>
+    /// Set the car unlocked state and saves it in PlayerPrefss
+    /// </summary>
+    /// <param name="key">Car name</param>
+    /// <param name="state">0 for locked, 1 for unlocked</param>
+    public static void SetCarUnlockedState(string key, int state) => PlayerPrefs.SetInt(key, state);
+
+    /// <summary>
+    /// Get the car unlocked state from PlayerPrefs
+    /// </summary>
+    /// <param name="key">Car name</param>
+    /// <returns>0 for locked, 1 for unlocked</returns>
+    public static bool GetCarUnlockedState(string key) => PlayerPrefs.GetInt(key) == 1;
 }

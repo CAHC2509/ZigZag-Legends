@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 5361937634211049130}
   - component: {fileID: 5361937634211049128}
   - component: {fileID: 483293304410088623}
+  - component: {fileID: -5054646898019076281}
   m_Layer: 0
   m_Name: Dominator
   m_TagString: Untagged
@@ -248,6 +249,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 90
   rotationAxis: 1
+--- !u!114 &-5054646898019076281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361937634211049125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792c2542e1f174e409f8f8a4ac76ec41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carData: {fileID: 11400000, guid: c8785ca25ba11964ebe35fe1a34d8aeb, type: 2}
 --- !u!1 &5361937634211049127
 GameObject:
   m_ObjectHideFlags: 0

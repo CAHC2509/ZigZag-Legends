@@ -33,5 +33,6 @@ public static class SingletonManager
         public static GameManager gameManager;
         public static HighScoreManager highScoreManager;
         public static PointsManager pointsManager;
+        public static CarUnlockManager carUnlockManager;
     }
 }

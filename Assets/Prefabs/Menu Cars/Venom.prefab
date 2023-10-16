@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1334124873760847167}
   - component: {fileID: 1334124873760847136}
   - component: {fileID: 554475347640099126}
+  - component: {fileID: -1514990284264971010}
   m_Layer: 0
   m_Name: Venom
   m_TagString: Untagged
@@ -165,6 +166,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 90
   rotationAxis: 1
+--- !u!114 &-1514990284264971010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334124873760418051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792c2542e1f174e409f8f8a4ac76ec41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carData: {fileID: 11400000, guid: 5123ad0741391be498fa5eb4c3682cba, type: 2}
 --- !u!1 &1334124873760418053
 GameObject:
   m_ObjectHideFlags: 0
