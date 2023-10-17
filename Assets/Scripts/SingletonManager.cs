@@ -8,6 +8,7 @@ public static class SingletonManager
     {
         // Camera
         public static CameraFollow cameraFollow;
+        public static CameraShake cameraShake;
 
         // Player
         public static PlayerController playerController;

@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         hasFallen = true;
 
+        SingletonManager.Player.cameraShake.Shake();
         Instantiate(explossionParticlesPrefab, transform.position, Quaternion.identity, null);
         SingletonManager.Managers.gameManager.PlayerDeath();
 
