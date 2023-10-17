@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.Events;
 
 public class CarUnlockManager : MonoBehaviour
@@ -13,13 +12,20 @@ public class CarUnlockManager : MonoBehaviour
 
     private void Awake() => SingletonManager.Managers.carUnlockManager = this;
 
-    public void RequestCarPurchase(CarData carData)
+    public void RequestCarPurchase(CarData carData, UnlockableCar unlockableCar)
     {
         int playerPoints = PlayerPrefsUtility.GetPlayerPoints();
 
         if (playerPoints > carData.price)
-            Debug.Log($"Can buy {carData.name}");
+        {
+            SingletonManager.Managers.pointsManager.ReducePoints(carData.price);
+            unlockableCar.UnlockCar();
+
+            onCarPurchaseCompleted.Invoke();
+        }
         else
-            Debug.Log($"Can't buy {carData.name}");
+        {
+            onCarPurchaseDenied.Invoke();
+        }
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Prestige
   m_EditorClassIdentifier: 
   carName: Prestige
-  price: 500
+  price: 5
   unlocked: 0

@@ -24,6 +24,8 @@ public class CarSelectionManager : MonoBehaviour
     [SerializeField]
     private GameObject buyCarButton;
     [SerializeField]
+    private GameObject lockImage;
+    [SerializeField]
     private List<UnlockableCar> carsUnlockableScripts;
 
     [Space, Header("Car spawn settings")]
@@ -85,10 +87,11 @@ public class CarSelectionManager : MonoBehaviour
         leftButton.SetActive(currentCarIndex > 0);
         rightButton.SetActive(currentCarIndex < menuCars.Count - 1);
 
-        // Select and buy car car buttons
+        // Lock, select and buy car buttons
         CarData currentCarData = carsUnlockableScripts[currentCarIndex].GetCarData();
         selectCarButton.SetActive(currentCarData.unlocked);
         buyCarButton.SetActive(!currentCarData.unlocked);
+        lockImage.SetActive(!currentCarData.unlocked);
     }
 
     /// <summary>
@@ -112,12 +115,18 @@ public class CarSelectionManager : MonoBehaviour
         // Show popup
         popUpText.text = $"Buy {carName}\nfor {carPrice}?";
         buyPopUp.SetActive(true);
+
+        lockImage.SetActive(false);
     }
 
     /// <summary>
     /// Request the current car purchase
     /// </summary>
-    public void PurchaseCar() => SingletonManager.Managers.carUnlockManager.RequestCarPurchase(carsUnlockableScripts[currentCarIndex].GetCarData());
+    public void PurchaseCar()
+    {
+        UnlockableCar currentCar = carsUnlockableScripts[currentCarIndex];
+        SingletonManager.Managers.carUnlockManager.RequestCarPurchase(currentCar.GetCarData(), currentCar);
+    }
 
     /// <summary>
     /// Execute the corresponding events when the player selects a car

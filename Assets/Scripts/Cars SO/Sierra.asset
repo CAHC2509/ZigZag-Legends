@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sierra
   m_EditorClassIdentifier: 
   carName: Sierra
-  price: 250
+  price: 5
   unlocked: 1

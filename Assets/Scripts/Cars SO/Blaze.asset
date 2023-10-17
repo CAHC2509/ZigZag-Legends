@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Blaze
   m_EditorClassIdentifier: 
   carName: Blaze
-  price: 400
+  price: 5
   unlocked: 0

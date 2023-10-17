@@ -23,4 +23,11 @@ public class PointsManager : MonoBehaviour
         PlayerPrefsUtility.SetPlayerPoints(playerPoints);
         pointsText.text = PlayerPrefsUtility.GetPlayerPoints().ToString();
     }
+
+    public void ReducePoints(int pointsAmount)
+    {
+        playerPoints -= pointsAmount;
+        PlayerPrefsUtility.SetPlayerPoints(playerPoints);
+        pointsText.text = PlayerPrefsUtility.GetPlayerPoints().ToString();
+    }
 }

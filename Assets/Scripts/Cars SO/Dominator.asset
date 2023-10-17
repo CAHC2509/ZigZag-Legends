@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dominator
   m_EditorClassIdentifier: 
   carName: Dominator
-  price: 300
+  price: 5
   unlocked: 0

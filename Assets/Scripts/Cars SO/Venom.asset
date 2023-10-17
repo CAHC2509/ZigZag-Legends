@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Venom
   m_EditorClassIdentifier: 
   carName: Venom
-  price: 600
+  price: 5
   unlocked: 0
