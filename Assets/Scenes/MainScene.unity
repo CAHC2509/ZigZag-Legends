@@ -669,7 +669,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5947293606914306586, guid: e59e9807b46fd1346a7ce64dc3a2f1d5, type: 3}
   m_PrefabInstance: {fileID: 5947293606549479461}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5947293606549479462}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -4365,7 +4365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlatformsCount: 25
-  specialPlatformSpawnRate: 25
+  specialPlatformSpawnRate: 5
   platformFallHeight: -25
   platformPrefab: {fileID: 5538365775823056964, guid: c0c8c84a2dcf9d0408839030dba3198f, type: 3}
   initialPlatformsPrefab: {fileID: 1064429275570158464, guid: a191a5b265d9dc3458ac22b3ef13249c, type: 3}
@@ -4384,6 +4384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsText: {fileID: 373379647}
+  textAnimator: {fileID: 5947293606549479463}
   playerPoints: 0
 --- !u!114 &1721572988
 MonoBehaviour:
@@ -4535,6 +4536,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 262307872}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 543169063}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   onCarPurchaseDenied:
     m_PersistentCalls:
@@ -5665,6 +5690,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5947293606914306587, guid: e59e9807b46fd1346a7ce64dc3a2f1d5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947293606914306587, guid: e59e9807b46fd1346a7ce64dc3a2f1d5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947293606914306587, guid: e59e9807b46fd1346a7ce64dc3a2f1d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5714,3 +5747,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e59e9807b46fd1346a7ce64dc3a2f1d5, type: 3}
+--- !u!1 &5947293606549479462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5947293606914306584, guid: e59e9807b46fd1346a7ce64dc3a2f1d5, type: 3}
+  m_PrefabInstance: {fileID: 5947293606549479461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5947293606549479463
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947293606549479462}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24a859375920c1b419b0da28ef0e5046, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

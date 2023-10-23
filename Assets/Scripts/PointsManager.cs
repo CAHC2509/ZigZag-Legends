@@ -7,6 +7,8 @@ public class PointsManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI pointsText;
+    [SerializeField]
+    private Animator textAnimator;
 
     public int playerPoints = 0; 
 
@@ -22,6 +24,8 @@ public class PointsManager : MonoBehaviour
         playerPoints += pointsAmount;
         PlayerPrefsUtility.SetPlayerPoints(playerPoints);
         pointsText.text = PlayerPrefsUtility.GetPlayerPoints().ToString();
+
+        textAnimator.SetTrigger("PointsEarned");
     }
 
     public void ReducePoints(int pointsAmount)
@@ -29,5 +33,7 @@ public class PointsManager : MonoBehaviour
         playerPoints -= pointsAmount;
         PlayerPrefsUtility.SetPlayerPoints(playerPoints);
         pointsText.text = PlayerPrefsUtility.GetPlayerPoints().ToString();
+
+        textAnimator.SetTrigger("PointsEarned");
     }
 }
