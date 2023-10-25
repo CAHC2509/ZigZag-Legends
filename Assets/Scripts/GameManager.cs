@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Death screen settings")]
+    [Header("Gameplay events settings")]
     [Space, SerializeField]
     private UnityEvent onPlayerDeath;
 
