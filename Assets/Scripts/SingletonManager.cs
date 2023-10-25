@@ -9,6 +9,7 @@ public static class SingletonManager
         // Camera
         public static CameraFollow cameraFollow;
         public static CameraShake cameraShake;
+        public static CameraBackgroundColorChanger cameraColorChanger;
 
         // Player
         public static PlayerController playerController;

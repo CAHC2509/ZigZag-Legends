@@ -559,8 +559,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a1bcb516a523b514ebfebad682dbb3e2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2748,6 +2748,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2773,7 +2774,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2850,6 +2851,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.5
   shakeMagnitude: 0.5
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c434647779aa8c345b25ea212e70c3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorDuration: 5
+  transitionDuration: 0.75
+  backgroundColors:
+  - {r: 0.9137255, g: 0.4, b: 0.627451, a: 1}
+  - {r: 0.015686275, g: 0.5686275, b: 0.68235296, a: 1}
+  - {r: 0.8235294, g: 0.45882353, b: 0, a: 1}
+  - {r: 0.53333336, g: 0.3882353, b: 0.75686276, a: 1}
+  - {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  - {r: 0, g: 0.6627451, b: 0.5529412, a: 1}
+  - {r: 0.654902, g: 0.38431373, b: 0.5254902, a: 1}
+  - {r: 0.7764706, g: 0.5921569, b: 0.28627452, a: 1}
+  - {r: 0.84313726, g: 0.4627451, b: 0.46666667, a: 1}
 --- !u!1 &984168815
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,6 +4521,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 963194231}
+        m_TargetAssemblyTypeName: CameraBackgroundColorChanger, Assembly-CSharp
+        m_MethodName: ChangeColorChangeAllowedState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &1721572985
 Transform:

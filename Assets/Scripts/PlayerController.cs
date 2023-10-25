@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             isMoving = true;
+            SingletonManager.Player.cameraColorChanger.ChangeColorChangeAllowedState(true);
             ChangeWheelsActiveState(true);
         }
     }
