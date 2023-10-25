@@ -6,14 +6,16 @@ public class UnlockableCar : MonoBehaviour
 {
     [SerializeField]
     private CarData carData;
+    [SerializeField]
+    private bool isDefaultCar = false;
 
-    private void Start() => carData.unlocked = PlayerPrefsUtility.GetCarUnlockedState(carData.name);
+    public void LoadCarData()
+    {
+        carData.unlocked = PlayerPrefsUtility.GetCarUnlockedState(carData.name);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns>CarData from current car</returns>
-    public CarData GetCarData() => carData;
+        if (isDefaultCar)
+            carData.unlocked = true;
+    }
 
     /// <summary>
     /// Change the current CarData unlocked state to true and saves it on PlayerPrefs
@@ -23,4 +25,10 @@ public class UnlockableCar : MonoBehaviour
         carData.unlocked = true;
         PlayerPrefsUtility.SetCarUnlockedState(carData.name, 1);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>CarData from current car</returns>
+    public CarData GetCarData() => carData;
 }

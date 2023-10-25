@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Roadster
   m_EditorClassIdentifier: 
   carName: Roadster
-  price: 5
+  price: 1
   unlocked: 0

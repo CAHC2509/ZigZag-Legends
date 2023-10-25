@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Rampage
   m_EditorClassIdentifier: 
   carName: Rampage
-  price: 5
+  price: 1
   unlocked: 0

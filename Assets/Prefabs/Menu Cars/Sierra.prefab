@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carData: {fileID: 11400000, guid: a7b3f65152da04848a880f760f1b74ee, type: 2}
+  isDefaultCar: 1
 --- !u!1 &9049235932812351668
 GameObject:
   m_ObjectHideFlags: 0

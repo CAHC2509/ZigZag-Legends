@@ -42,6 +42,7 @@ public class CarSelectionManager : MonoBehaviour
     {
         currentCarIndex = PlayerPrefsUtility.GetCarSelectedIndex();
 
+        LoadCarsData();
         ShowLastSelectedCar();
         UpdateButtonsVisibility();
     }
@@ -126,6 +127,15 @@ public class CarSelectionManager : MonoBehaviour
     {
         UnlockableCar currentCar = carsUnlockableScripts[currentCarIndex];
         SingletonManager.Managers.carUnlockManager.RequestCarPurchase(currentCar.GetCarData(), currentCar);
+    }
+
+    /// <summary>
+    /// Load the data from all the unlockable cars
+    /// </summary>
+    private void LoadCarsData()
+    {
+        foreach (UnlockableCar car in carsUnlockableScripts)
+            car.LoadCarData();
     }
 
     /// <summary>
