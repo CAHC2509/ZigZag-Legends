@@ -16,8 +16,8 @@ public class HighScoreManager : MonoBehaviour
     {
         SingletonManager.Managers.highScoreManager = this;
 
-        actualScoreText.text = $"Actual: {actualScore}";
-        highScoreText.text = $"Best: {PlayerPrefsUtility.GetHighScore()}";
+        actualScoreText.text = $"Actual: {actualScore}m";
+        highScoreText.text = $"Best: {PlayerPrefsUtility.GetHighScore()}m";
     }
 
     public void CheckHighScore()
@@ -31,18 +31,18 @@ public class HighScoreManager : MonoBehaviour
     public void UpdateActualScore()
     {
         actualScore++;
-        actualScoreText.text = $"Actual: {actualScore}";
+        actualScoreText.text = $"Actual: {actualScore}m";
     }
 
     public void UpdateHighScore(int newHighScore)
     {
         PlayerPrefsUtility.SetHighScore(newHighScore);
-        highScoreText.text = $"Best: {newHighScore}";
+        highScoreText.text = $"Best: {newHighScore}m";
     }
 
     public void ResetActualScore()
     {
         actualScore = 0;
-        actualScoreText.text = $"Actual: {actualScore}";
+        actualScoreText.text = $"Actual: {actualScore}m";
     }
 }

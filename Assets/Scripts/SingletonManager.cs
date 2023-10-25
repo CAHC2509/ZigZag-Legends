@@ -17,6 +17,9 @@ public static class SingletonManager
 
     public static class WorldObjects
     {
+        // Explossion
+        public static GameObject currentExplossion;
+
         // Coins
         public static GameObject coinPrefab;
         public static GameObject coinParticlesPrefab;

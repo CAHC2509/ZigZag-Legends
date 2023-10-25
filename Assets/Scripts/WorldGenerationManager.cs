@@ -64,11 +64,6 @@ public class WorldGenerationManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Spawn the initial corridor of platforms
-    /// </summary>
-    public void SpawnInitialPlatforms() => Instantiate(initialPlatformsPrefab);
-
-    /// <summary>
     /// Destroy all the existing objects with tag "Platform"
     /// </summary>
     public void DestroyExistingPlatforms()
@@ -92,4 +87,14 @@ public class WorldGenerationManager : MonoBehaviour
 
         generatedPlatformsCount = 0;
     }
+
+    /// <summary>
+    /// Spawn the initial corridor of platforms
+    /// </summary>
+    public void SpawnInitialPlatforms() => Instantiate(initialPlatformsPrefab);
+
+    /// <summary>
+    /// Destroy the last created explossion object
+    /// </summary>
+    public void DestroyCurrentExplosion() => Destroy(SingletonManager.WorldObjects.currentExplossion);
 }
