@@ -5,14 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlatformController : MonoBehaviour
 {
+    [Header("Generation points settings")]
+    [SerializeField]
+    private Transform frontGenerationPoint;
+    [SerializeField]
+    private Transform rightGenerationPoint;
+    [SerializeField]
+    private List<Transform> generationPoints;
+
+    [Space, Header("Main settings")]
+    [SerializeField]
+    private Rigidbody rb;
+    [SerializeField]
+    private GameObject backBlock;
     [SerializeField]
     private float coinYOffset = 3f;
     [SerializeField]
     private float maxPlayerDistance = 5f;
-    [SerializeField]
-    private Rigidbody rb;
-    [SerializeField]
-    private List<Transform> generationPoints;
     [SerializeField]
     private bool isStartingPlatform = false;
     [SerializeField]
@@ -41,7 +50,7 @@ public class PlatformController : MonoBehaviour
     private void Update()
     {
         if (transform.localPosition.y < SingletonManager.WorldObjects.platformFallHeight)
-            DestroyThisPlatform();
+            Destroy(gameObject);
 
         if (playerTransform != null)
         {
@@ -63,6 +72,8 @@ public class PlatformController : MonoBehaviour
         SingletonManager.WorldObjects.instanciatedPlatformControllers.Remove(this);
         SingletonManager.Managers.highScoreManager.UpdateActualScore();
 
+        backBlock.SetActive(false); // Disable back block for a better effect
+
         hasFallen = true;
     }
 
@@ -71,12 +82,19 @@ public class PlatformController : MonoBehaviour
     /// </summary>
     public void GenerateNextPlatform()
     {
-        // Cache the platform prefab
-        GameObject platform = SingletonManager.WorldObjects.platformPrefab;
-
         // Generate the next platform in a random place (spawnpoint)
         int randomIndex = Random.Range(0, generationPoints.Count);
-        GameObject instanciatedPlatform = Instantiate(platform, generationPoints[randomIndex].position, Quaternion.identity, null);
+        Transform generationPointSelected = generationPoints[randomIndex];
+
+        GameObject platformPrefabSelected = null;
+
+        if (generationPointSelected == frontGenerationPoint)
+            platformPrefabSelected = SingletonManager.WorldObjects.frontPlatformPrefab;
+        else
+            platformPrefabSelected = SingletonManager.WorldObjects.rightPlatformPrefab;
+
+
+        GameObject instanciatedPlatform = Instantiate(platformPrefabSelected, generationPointSelected.position, platformPrefabSelected.transform.rotation, null);
         SingletonManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
 
         // Set the previous spawned platform as last platform controller
@@ -98,8 +116,6 @@ public class PlatformController : MonoBehaviour
         GameObject coin = Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
         coin.transform.SetParent(transform);
     }
-
-    private void DestroyThisPlatform() => Destroy(gameObject);
 
     private void OnCollisionEnter(Collision collision)
     {

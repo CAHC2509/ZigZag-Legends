@@ -4908,8 +4908,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a1bcb516a523b514ebfebad682dbb3e2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5307,10 +5307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bef5435a1a18b49b5c792f0a579caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frontPlatformPrefab: {fileID: 5538365775823056964, guid: c0c8c84a2dcf9d0408839030dba3198f, type: 3}
+  rightPlatformPrefab: {fileID: 5538365775823056964, guid: 9ce8a4ac576d4be418b9fc64752b3fcd, type: 3}
   maxPlatformsCount: 25
   specialPlatformSpawnRate: 25
   platformFallHeight: -25
-  platformPrefab: {fileID: 5538365775823056964, guid: c0c8c84a2dcf9d0408839030dba3198f, type: 3}
   initialPlatformsPrefab: {fileID: 1064429275570158464, guid: a191a5b265d9dc3458ac22b3ef13249c, type: 3}
   coinPrefab: {fileID: 3231458640331517823, guid: 9c504b547680a5b448f8140cebc6f71d, type: 3}
   coinParticlesPrefab: {fileID: 968380719656044553, guid: d493188641a7023418a5d4a955b3a6e6, type: 3}

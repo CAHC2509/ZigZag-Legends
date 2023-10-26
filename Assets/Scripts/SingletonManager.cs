@@ -26,8 +26,9 @@ public static class SingletonManager
         public static ParticleSystem coinParticleSystem;
 
         // Platforms
+        public static GameObject frontPlatformPrefab;
+        public static GameObject rightPlatformPrefab;
         public static PlatformController lastPlatformController;
-        public static GameObject platformPrefab;
         public static float platformFallHeight;
         public static List<GameObject> instanciatedPlatforms = new List<GameObject>();
         public static List<PlatformController> instanciatedPlatformControllers = new List<PlatformController>();

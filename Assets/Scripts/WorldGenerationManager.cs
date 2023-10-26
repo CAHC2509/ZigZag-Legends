@@ -6,13 +6,15 @@ public class WorldGenerationManager : MonoBehaviour
 {
     [Header("Platforms settings")]
     [SerializeField]
+    private GameObject frontPlatformPrefab;
+    [SerializeField]
+    private GameObject rightPlatformPrefab;
+    [SerializeField]
     private int maxPlatformsCount = 25;
     [SerializeField]
     private int specialPlatformSpawnRate = 25;
     [SerializeField]
     private float platformFallHeight = -25f;
-    [SerializeField]
-    private GameObject platformPrefab;
     [SerializeField]
     private GameObject initialPlatformsPrefab;
 
@@ -27,7 +29,8 @@ public class WorldGenerationManager : MonoBehaviour
     private void Awake()
     {
         // Initialize platform references and clear the list of instantiated platforms
-        SingletonManager.WorldObjects.platformPrefab = platformPrefab;
+        SingletonManager.WorldObjects.frontPlatformPrefab = frontPlatformPrefab;
+        SingletonManager.WorldObjects.rightPlatformPrefab = rightPlatformPrefab;
         SingletonManager.WorldObjects.platformFallHeight = platformFallHeight;
         SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
         SingletonManager.WorldObjects.instanciatedPlatformControllers.Clear();
