@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6545437762236095991}
   - component: {fileID: 2122079363236534929}
   - component: {fileID: 7844535056344884827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Neon B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3dd3bcd634dd356409ac6eed345b0e44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6436446655451975392}
   - component: {fileID: 6436446655451975394}
   - component: {fileID: 6436446655451975395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Neon R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3dd3bcd634dd356409ac6eed345b0e44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 6436446656273574491}
   - component: {fileID: 6436446656273574493}
   - component: {fileID: 6436446656273574490}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Neon L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3dd3bcd634dd356409ac6eed345b0e44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 6436446656956347220}
   - component: {fileID: 6436446656956347222}
   - component: {fileID: 6436446656956347223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Neon F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3dd3bcd634dd356409ac6eed345b0e44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
