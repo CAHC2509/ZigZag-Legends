@@ -58,7 +58,10 @@ public class CarSelectionManager : MonoBehaviour
         {
             menuCars[currentCarIndex].SetActive(false);
             currentCarIndex++;
-            menuCars[currentCarIndex].SetActive(true);
+
+            GameObject nextCar = menuCars[currentCarIndex];
+            nextCar.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Reset rotatiion
+            nextCar.SetActive(true);
 
             UpdateButtonsVisibility();
         }
@@ -73,7 +76,10 @@ public class CarSelectionManager : MonoBehaviour
         {
             menuCars[currentCarIndex].SetActive(false);
             currentCarIndex--;
-            menuCars[currentCarIndex].SetActive(true);
+
+            GameObject previousCar = menuCars[currentCarIndex];
+            previousCar.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Reset rotatiion
+            previousCar.SetActive(true);
 
             UpdateButtonsVisibility();
         }
