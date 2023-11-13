@@ -14,7 +14,7 @@ public class PointsManager : MonoBehaviour
 
     private void Start()
     {
-        SingletonManager.Managers.pointsManager = this;
+        SingleInstanceManager.Managers.pointsManager = this;
         playerPoints = PlayerPrefsUtility.GetPlayerPoints();
         pointsText.text = playerPoints.ToString();
     }

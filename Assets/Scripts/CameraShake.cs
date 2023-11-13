@@ -12,7 +12,7 @@ public class CameraShake : MonoBehaviour
     private Vector3 originalPosition;
     private Coroutine shakeCoroutine;
 
-    private void Awake() => SingletonManager.Player.cameraShake = this;
+    private void Awake() => SingleInstanceManager.Player.cameraShake = this;
 
     /// <summary>
     /// Starts the camera shaking coroutine

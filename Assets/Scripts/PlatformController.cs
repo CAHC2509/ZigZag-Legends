@@ -35,21 +35,21 @@ public class PlatformController : MonoBehaviour
     private void Awake()
     {
         if (isStartingPlatform)
-            SingletonManager.WorldObjects.instanciatedPlatformControllers.Add(this);
+            SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Add(this);
     }
 
     private void Start()
     {
         if (isLastStartingPlatform)
         {
-            SingletonManager.WorldObjects.lastPlatformController = this;
+            SingleInstanceManager.WorldObjects.lastPlatformController = this;
             GenerateNextPlatform();
         }
     }
 
     private void Update()
     {
-        if (transform.localPosition.y < SingletonManager.WorldObjects.platformFallHeight)
+        if (transform.localPosition.y < SingleInstanceManager.WorldObjects.platformFallHeight)
             Destroy(gameObject);
 
         if (playerTransform != null)
@@ -68,9 +68,9 @@ public class PlatformController : MonoBehaviour
     {
         rb.isKinematic = false;
 
-        SingletonManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
-        SingletonManager.WorldObjects.instanciatedPlatformControllers.Remove(this);
-        SingletonManager.Managers.highScoreManager.UpdateActualScore();
+        SingleInstanceManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
+        SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Remove(this);
+        SingleInstanceManager.Managers.highScoreManager.UpdateActualScore();
 
         backBlock.SetActive(false); // Disable back block for a better effect
 
@@ -89,18 +89,18 @@ public class PlatformController : MonoBehaviour
         GameObject platformPrefabSelected = null;
 
         if (generationPointSelected == frontGenerationPoint)
-            platformPrefabSelected = SingletonManager.WorldObjects.frontPlatformPrefab;
+            platformPrefabSelected = SingleInstanceManager.WorldObjects.frontPlatformPrefab;
         else
-            platformPrefabSelected = SingletonManager.WorldObjects.rightPlatformPrefab;
+            platformPrefabSelected = SingleInstanceManager.WorldObjects.rightPlatformPrefab;
 
 
         GameObject instanciatedPlatform = Instantiate(platformPrefabSelected, generationPointSelected.position, platformPrefabSelected.transform.rotation, null);
-        SingletonManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
+        SingleInstanceManager.WorldObjects.instanciatedPlatforms.Add(instanciatedPlatform);
 
         // Set the previous spawned platform as last platform controller
         PlatformController instanciatedPlatformController = instanciatedPlatform.GetComponent<PlatformController>();
-        SingletonManager.WorldObjects.instanciatedPlatformControllers.Add(instanciatedPlatformController);
-        SingletonManager.WorldObjects.lastPlatformController = instanciatedPlatformController;
+        SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Add(instanciatedPlatformController);
+        SingleInstanceManager.WorldObjects.lastPlatformController = instanciatedPlatformController;
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class PlatformController : MonoBehaviour
         spawnPosition.y += coinYOffset;
 
         // Spawn coin and set as child of the current platform
-        GameObject coin = Instantiate(SingletonManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
+        GameObject coin = Instantiate(SingleInstanceManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
         coin.transform.SetParent(transform);
     }
 

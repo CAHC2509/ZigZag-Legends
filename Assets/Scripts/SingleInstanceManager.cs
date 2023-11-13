@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SingletonManager
+public static class SingleInstanceManager
 {
     public static class Player
     {

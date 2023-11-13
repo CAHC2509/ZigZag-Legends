@@ -10,7 +10,7 @@ public class CarUnlockManager : MonoBehaviour
     [Space, SerializeField]
     private UnityEvent onCarPurchaseDenied;
 
-    private void Awake() => SingletonManager.Managers.carUnlockManager = this;
+    private void Awake() => SingleInstanceManager.Managers.carUnlockManager = this;
 
     public void RequestCarPurchase(CarData carData, UnlockableCar unlockableCar)
     {
@@ -18,7 +18,7 @@ public class CarUnlockManager : MonoBehaviour
 
         if (playerPoints > carData.price)
         {
-            SingletonManager.Managers.pointsManager.ReducePoints(carData.price);
+            SingleInstanceManager.Managers.pointsManager.ReducePoints(carData.price);
             unlockableCar.UnlockCar();
 
             onCarPurchaseCompleted.Invoke();

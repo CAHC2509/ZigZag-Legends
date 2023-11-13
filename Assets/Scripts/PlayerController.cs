@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         playerInputAction.action.performed += PlayerInputDetected;
     }
 
-    private void Awake() => SingletonManager.Player.playerController = this;
+    private void Awake() => SingleInstanceManager.Player.playerController = this;
 
     private void Start()
     {
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             isMoving = true;
-            SingletonManager.Player.cameraColorChanger.ChangeColorChangeAllowedState(true);
+            SingleInstanceManager.Player.cameraColorChanger.ChangeColorChangeAllowedState(true);
             ChangeWheelsActiveState(true);
         }
     }
@@ -118,9 +118,9 @@ public class PlayerController : MonoBehaviour
     {
         hasFallen = true;
 
-        SingletonManager.Player.cameraShake.Shake();
-        SingletonManager.WorldObjects.currentExplossion = Instantiate(explossionParticlesPrefab, transform.position, Quaternion.identity, null);
-        SingletonManager.Managers.gameManager.PlayerDeath();
+        SingleInstanceManager.Player.cameraShake.Shake();
+        SingleInstanceManager.WorldObjects.currentExplossion = Instantiate(explossionParticlesPrefab, transform.position, Quaternion.identity, null);
+        SingleInstanceManager.Managers.gameManager.PlayerDeath();
 
         Destroy(gameObject);
     }

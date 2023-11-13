@@ -14,7 +14,7 @@ public class HighScoreManager : MonoBehaviour
 
     private void Start()
     {
-        SingletonManager.Managers.highScoreManager = this;
+        SingleInstanceManager.Managers.highScoreManager = this;
 
         actualScoreText.text = $"Actual: {actualScore}m";
         highScoreText.text = $"Best: {PlayerPrefsUtility.GetHighScore()}m";

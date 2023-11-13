@@ -29,36 +29,36 @@ public class WorldGenerationManager : MonoBehaviour
     private void Awake()
     {
         // Initialize platform references and clear the list of instantiated platforms
-        SingletonManager.WorldObjects.frontPlatformPrefab = frontPlatformPrefab;
-        SingletonManager.WorldObjects.rightPlatformPrefab = rightPlatformPrefab;
-        SingletonManager.WorldObjects.platformFallHeight = platformFallHeight;
-        SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
-        SingletonManager.WorldObjects.instanciatedPlatformControllers.Clear();
+        SingleInstanceManager.WorldObjects.frontPlatformPrefab = frontPlatformPrefab;
+        SingleInstanceManager.WorldObjects.rightPlatformPrefab = rightPlatformPrefab;
+        SingleInstanceManager.WorldObjects.platformFallHeight = platformFallHeight;
+        SingleInstanceManager.WorldObjects.instanciatedPlatforms.Clear();
+        SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Clear();
 
         // Initialize coin and particles references
         GameObject particles = Instantiate(coinParticlesPrefab);
         ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
 
-        SingletonManager.WorldObjects.coinParticlesPrefab = particles;
-        SingletonManager.WorldObjects.coinParticleSystem = particleSystem;
-        SingletonManager.WorldObjects.coinPrefab = coinPrefab;
+        SingleInstanceManager.WorldObjects.coinParticlesPrefab = particles;
+        SingleInstanceManager.WorldObjects.coinParticleSystem = particleSystem;
+        SingleInstanceManager.WorldObjects.coinPrefab = coinPrefab;
     }
 
     private void Update()
     {
         // Cache the conditions to improve performance and readability
-        bool shouldGenerateNewPlatform = SingletonManager.WorldObjects.instanciatedPlatforms.Count < maxPlatformsCount;
-        bool lastPlatformControllerIsNull = SingletonManager.WorldObjects.lastPlatformController == null;
+        bool shouldGenerateNewPlatform = SingleInstanceManager.WorldObjects.instanciatedPlatforms.Count < maxPlatformsCount;
+        bool lastPlatformControllerIsNull = SingleInstanceManager.WorldObjects.lastPlatformController == null;
 
         if (shouldGenerateNewPlatform && !lastPlatformControllerIsNull)
         {
-            SingletonManager.WorldObjects.lastPlatformController.GenerateNextPlatform();
+            SingleInstanceManager.WorldObjects.lastPlatformController.GenerateNextPlatform();
 
             // Check if we've generated enough platforms and spawn a special one
             if (generatedPlatformsCount >= specialPlatformSpawnRate)
             {
                 // Generate coin
-                SingletonManager.WorldObjects.lastPlatformController.SpawnCoin();
+                SingleInstanceManager.WorldObjects.lastPlatformController.SpawnCoin();
                 generatedPlatformsCount = 0;
             }
 
@@ -84,9 +84,9 @@ public class WorldGenerationManager : MonoBehaviour
     /// </summary>
     private void ResetWordGenerationValues()
     {
-        SingletonManager.WorldObjects.lastPlatformController = null;
-        SingletonManager.WorldObjects.instanciatedPlatforms.Clear();
-        SingletonManager.WorldObjects.instanciatedPlatformControllers.Clear();
+        SingleInstanceManager.WorldObjects.lastPlatformController = null;
+        SingleInstanceManager.WorldObjects.instanciatedPlatforms.Clear();
+        SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Clear();
 
         generatedPlatformsCount = 0;
     }
@@ -99,5 +99,5 @@ public class WorldGenerationManager : MonoBehaviour
     /// <summary>
     /// Destroy the last created explossion object
     /// </summary>
-    public void DestroyCurrentExplosion() => Destroy(SingletonManager.WorldObjects.currentExplossion);
+    public void DestroyCurrentExplosion() => Destroy(SingleInstanceManager.WorldObjects.currentExplossion);
 }

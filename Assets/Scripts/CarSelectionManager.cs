@@ -132,7 +132,7 @@ public class CarSelectionManager : MonoBehaviour
     public void PurchaseCar()
     {
         UnlockableCar currentCar = carsUnlockableScripts[currentCarIndex];
-        SingletonManager.Managers.carUnlockManager.RequestCarPurchase(currentCar.GetCarData(), currentCar);
+        SingleInstanceManager.Managers.carUnlockManager.RequestCarPurchase(currentCar.GetCarData(), currentCar);
     }
 
     /// <summary>

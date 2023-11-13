@@ -9,7 +9,9 @@ public class CameraFollow : MonoBehaviour
 
     [Space, Header("Menu settings")]
     [SerializeField]
-    private Vector3 menuPosition = new Vector3(5f, 33f, 5f);
+    private Vector3 menuPosition = new Vector3(5f, 125f, 5f);
+    [SerializeField]
+    private Vector3 carSelectionPosition = new Vector3(5f, 83f, 5f);
     [SerializeField]
     private Quaternion menuRotation = Quaternion.Euler(40f, -135f, 0f);
 
@@ -37,16 +39,24 @@ public class CameraFollow : MonoBehaviour
     /// <param name="targetType">0 for find player, 1 for find menu</param>
     public void FindNewTarget(int targetType)
     {
-        if (targetType == 0)
+        switch (targetType)
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-            offset = playerOffset;
-        }
-        else if (targetType == 1)
-        {
-            target = null;
-            transform.position = menuPosition;
-            transform.rotation = menuRotation;
+            case 0:
+                target = SingleInstanceManager.Player.playerController.transform;
+                offset = playerOffset;
+                break;
+
+            case 1:
+                target = null;
+                transform.position = carSelectionPosition;
+                transform.rotation = menuRotation;
+                break;
+
+            case 2:
+                target = null;
+                transform.position = menuPosition;
+                transform.rotation = menuRotation;
+                break;
         }
     }
 

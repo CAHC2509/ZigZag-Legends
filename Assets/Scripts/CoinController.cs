@@ -10,15 +10,15 @@ public class CoinController : MonoBehaviour
 
     private void Start()
     {
-        coinParticlesPrefab = SingletonManager.WorldObjects.coinParticlesPrefab;
-        coinParticleSystem = SingletonManager.WorldObjects.coinParticleSystem;
+        coinParticlesPrefab = SingleInstanceManager.WorldObjects.coinParticlesPrefab;
+        coinParticleSystem = SingleInstanceManager.WorldObjects.coinParticleSystem;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SingletonManager.Managers.pointsManager.AddPoints();
+            SingleInstanceManager.Managers.pointsManager.AddPoints();
 
             coinParticlesPrefab.transform.position = transform.position;
 

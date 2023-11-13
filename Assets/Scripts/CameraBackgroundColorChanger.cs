@@ -17,7 +17,7 @@ public class CameraBackgroundColorChanger : MonoBehaviour
     private float transitionTimer = 0f;
     private bool colorChangeAllowed = false;
 
-    private void Awake() => SingletonManager.Player.cameraColorChanger = this;
+    private void Awake() => SingleInstanceManager.Player.cameraColorChanger = this;
 
     private void Start()
     {

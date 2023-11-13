@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 90;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        SingletonManager.Managers.gameManager = this;
+        SingleInstanceManager.Managers.gameManager = this;
     }
 
     /// <summary>
     /// Destroy the current car selected for the player
     /// </summary>
-    public void DestroyCurrentPlayer() => Destroy(SingletonManager.Player.playerController.gameObject);
+    public void DestroyCurrentPlayer() => Destroy(SingleInstanceManager.Player.playerController.gameObject);
 
     /// <summary>
     /// Executes some custom events (called when the player restart the match)
