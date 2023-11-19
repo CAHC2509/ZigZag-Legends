@@ -4,17 +4,41 @@ using UnityEngine;
 
 public class UnlockableCar : MonoBehaviour
 {
+    [Header("Car data settings")]
     [SerializeField]
     private CarData carData;
     [SerializeField]
     private bool isDefaultCar = false;
 
+    [Space, Header("Car visual settings")]
+    [SerializeField]
+    private Material revealedMaterial;
+    [SerializeField]
+    private Material unrevealedMaterial;
+    [SerializeField]
+    private List<MeshRenderer> carParts;
+
     public void LoadCarData()
     {
-        carData.unlocked = PlayerPrefsUtility.GetCarUnlockedState(carData.name);
-
         if (isDefaultCar)
+        {
             carData.unlocked = true;
+            carData.revealed = true;
+
+            return;
+        }
+
+        carData.unlocked = PlayerPrefsUtility.GetCarUnlockedState($"Unlocked_{carData.name}");
+        carData.revealed = PlayerPrefsUtility.GetCarRevealedState($"Revealed_{carData.name}");
+
+        if (!carData.revealed)
+            ChangeCarMaterial(unrevealedMaterial);
+    }
+
+    private void ChangeCarMaterial(Material newMaterial)
+    {
+        foreach (MeshRenderer part in carParts)
+            part.material = newMaterial;
     }
 
     /// <summary>
@@ -23,7 +47,23 @@ public class UnlockableCar : MonoBehaviour
     public void UnlockCar()
     {
         carData.unlocked = true;
-        PlayerPrefsUtility.SetCarUnlockedState(carData.name, 1);
+        carData.revealed = true;
+
+        PlayerPrefsUtility.SetCarUnlockedState($"Unlocked_{carData.name}", 1);
+        PlayerPrefsUtility.SetCarRevealedState($"Revealed_{carData.name}", 1);
+
+        RevealCar();
+    }
+
+    /// <summary>
+    /// Shows the true apparience of the car
+    /// </summary>
+    public void RevealCar()
+    {
+        ChangeCarMaterial(revealedMaterial);
+
+        carData.revealed = true;
+        PlayerPrefsUtility.SetCarRevealedState($"Revealed_{carData.name}", 1);
     }
 
     /// <summary>

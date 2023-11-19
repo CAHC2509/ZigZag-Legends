@@ -68,4 +68,18 @@ public static class PlayerPrefsUtility
     /// <param name="key">Car name</param>
     /// <returns>0 for locked, 1 for unlocked</returns>
     public static bool GetCarUnlockedState(string key) => PlayerPrefs.GetInt(key) == 1;
+
+    /// <summary>
+    /// Set the car revealed state and saves it in PlayerPrefss
+    /// </summary>
+    /// <param name="key">Car name</param>
+    /// <param name="state">0 for revealed, 1 for unrevealed</param>
+    public static void SetCarRevealedState(string key, int state) => PlayerPrefs.SetInt(key, state);
+
+    /// <summary>
+    /// Get the car revealed state from PlayerPrefs
+    /// </summary>
+    /// <param name="key">Car name</param>
+    /// <returns>0 for revealed, 1 for unrevealed</returns>
+    public static bool GetCarRevealedState(string key) => PlayerPrefs.GetInt(key) == 1;
 }

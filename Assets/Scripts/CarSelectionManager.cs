@@ -14,7 +14,7 @@ public class CarSelectionManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> menuCars;
 
-    [Space, Header("Purchasable cars settings")]
+    [Space, Header("Unlockable cars settings")]
     [SerializeField]
     private GameObject buyPopUp;
     [SerializeField]
@@ -23,6 +23,8 @@ public class CarSelectionManager : MonoBehaviour
     private GameObject selectCarButton;
     [SerializeField]
     private GameObject buyCarButton;
+    [SerializeField]
+    private GameObject revealCarButton;
     [SerializeField]
     private GameObject lockImage;
     [SerializeField]
@@ -98,6 +100,7 @@ public class CarSelectionManager : MonoBehaviour
         CarData currentCarData = carsUnlockableScripts[currentCarIndex].GetCarData();
         selectCarButton.SetActive(currentCarData.unlocked);
         buyCarButton.SetActive(!currentCarData.unlocked);
+        revealCarButton.SetActive(!currentCarData.revealed);
         lockImage.SetActive(!currentCarData.unlocked);
     }
 
@@ -124,6 +127,17 @@ public class CarSelectionManager : MonoBehaviour
         buyPopUp.SetActive(true);
 
         lockImage.SetActive(false);
+    }
+
+    /// <summary>
+    /// Reveals the current car apparience
+    /// </summary>
+    public void RevealCar()
+    {
+        UnlockableCar currentCar = carsUnlockableScripts[currentCarIndex];
+        currentCar.RevealCar();
+
+        revealCarButton.SetActive(false);
     }
 
     /// <summary>

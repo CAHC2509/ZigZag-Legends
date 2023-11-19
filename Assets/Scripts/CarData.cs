@@ -6,4 +6,5 @@ public class CarData : ScriptableObject
     public string carName;
     public int price;
     public bool unlocked;
+    public bool revealed;
 }

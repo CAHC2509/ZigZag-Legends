@@ -262,6 +262,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carData: {fileID: 11400000, guid: ada0ed28c2ca6744bbc6cf1bfb8f58e6, type: 2}
+  isDefaultCar: 0
+  revealedMaterial: {fileID: 2100000, guid: d9b2be6556a313b4d9c90dfc7ed938ab, type: 2}
+  unrevealedMaterial: {fileID: 2100000, guid: 0be4c7a357a76a949afb5e82b225a254, type: 2}
+  carParts:
+  - {fileID: 4843814228774740329}
+  - {fileID: 4843814228774740333}
+  - {fileID: 4843814228774740321}
+  - {fileID: 4843814228774740331}
+  - {fileID: 4843814228774740335}
 --- !u!1 &4843814228776943531
 GameObject:
   m_ObjectHideFlags: 0
