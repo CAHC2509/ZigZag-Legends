@@ -22,8 +22,6 @@ public static class SingleInstanceManager
 
         // Coins
         public static GameObject coinPrefab;
-        public static GameObject coinParticlesPrefab;
-        public static ParticleSystem coinParticleSystem;
 
         // Platforms
         public static GameObject frontPlatformPrefab;

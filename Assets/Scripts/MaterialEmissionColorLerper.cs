@@ -14,13 +14,12 @@ public class MaterialEmissionColorLerper : MonoBehaviour
     private Color currentColor;
     private Color targetColor;
     private float lerpTimer;
-    private int currentIndex;
-    private int previousIndex = -1;
+    private int currentIndex = 0;
 
     private void Awake()
     {
         currentColor = targetMaterial.GetColor("_EmissionColor");
-        StartRandomColorLerp(); // Start the first transition
+        StartNextColorLerp(); // Start the first transition
     }
 
     private void Update()
@@ -36,23 +35,17 @@ public class MaterialEmissionColorLerper : MonoBehaviour
         else
         {
             // When a transition is complete, start a new one
-            StartRandomColorLerp();
+            StartNextColorLerp();
         }
     }
 
-    private void StartRandomColorLerp()
+    private void StartNextColorLerp()
     {
-        int randomIndex = Random.Range(0, emissionColors.Count);
-
-        // Ensure the new random color is not the same as the previous one
-        while (randomIndex == previousIndex)
-            randomIndex = Random.Range(0, emissionColors.Count);
-
-        // Update the previous index to the current one
-        previousIndex = randomIndex;
+        // Avanza al siguiente color
+        currentIndex = (currentIndex + 1) % emissionColors.Count;
 
         currentColor = targetMaterial.GetColor("_EmissionColor");
-        targetColor = emissionColors[randomIndex];
+        targetColor = emissionColors[currentIndex];
         lerpTimer = 0f;
     }
 }

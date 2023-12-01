@@ -2145,7 +2145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.89612, y: -55}
+  m_AnchoredPosition: {x: 103.895996, y: -55}
   m_SizeDelta: {x: 207.79224, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &406349377
@@ -2789,7 +2789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.89612, y: -55}
+  m_AnchoredPosition: {x: 103.895996, y: -55}
   m_SizeDelta: {x: 207.79224, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501223054
@@ -11323,7 +11323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.89612, y: -55}
+  m_AnchoredPosition: {x: 103.895996, y: -55}
   m_SizeDelta: {x: 207.79224, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1654918786
@@ -12028,11 +12028,10 @@ MonoBehaviour:
   frontPlatformPrefab: {fileID: 5538365775823056964, guid: c0c8c84a2dcf9d0408839030dba3198f, type: 3}
   rightPlatformPrefab: {fileID: 5538365775823056964, guid: 9ce8a4ac576d4be418b9fc64752b3fcd, type: 3}
   maxPlatformsCount: 25
-  specialPlatformSpawnRate: 25
+  specialPlatformSpawnRate: 5
   platformFallHeight: -25
   initialPlatformsPrefab: {fileID: 1064429275570158464, guid: a191a5b265d9dc3458ac22b3ef13249c, type: 3}
   coinPrefab: {fileID: 3231458640331517823, guid: 9c504b547680a5b448f8140cebc6f71d, type: 3}
-  coinParticlesPrefab: {fileID: 968380719656044553, guid: d493188641a7023418a5d4a955b3a6e6, type: 3}
 --- !u!114 &1721572987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12277,17 +12276,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetMaterial: {fileID: 2100000, guid: 3dd3bcd634dd356409ac6eed345b0e44, type: 2}
   emissionColors:
-  - {r: 0.9622642, g: 0.64816666, b: 0.95567477, a: 1}
-  - {r: 0, g: 0.6627451, b: 0.5529412, a: 1}
+  - {r: 1, g: 0, b: 0.9875002, a: 1}
   - {r: 1, g: 0.5550459, b: 0, a: 1}
-  - {r: 0, g: 0.6761006, b: 0.8113208, a: 1}
-  - {r: 1, g: 0.3433962, b: 0.6202776, a: 1}
-  - {r: 0.9433962, g: 0.7406052, b: 0.40405837, a: 1}
-  - {r: 0.654902, g: 0.38431373, b: 0.5254902, a: 1}
-  - {r: 0.3029014, g: 0.8096055, b: 0.8584906, a: 1}
+  - {r: 0, g: 0.6509434, b: 0.5430948, a: 1}
+  - {r: 1, g: 0, b: 0.4191618, a: 1}
+  - {r: 0, g: 0.6976574, b: 0.8396226, a: 1}
   - {r: 1, g: 0.35283017, b: 0.35804912, a: 1}
-  - {r: 1, g: 0.9144731, b: 0.22075468, a: 1}
-  - {r: 0.4377358, g: 1, b: 0.4591263, a: 1}
+  - {r: 0.73475456, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.8894472, b: 0, a: 1}
+  - {r: 0.6792453, g: 0.09868278, b: 0.4015849, a: 1}
+  - {r: 0, g: 1, b: 0.03496504, a: 1}
   lerpDuration: 1
 --- !u!1001 &1733882014
 PrefabInstance:

@@ -27,6 +27,7 @@ public class PlatformController : MonoBehaviour
     [SerializeField]
     private bool isLastStartingPlatform = false;
 
+    private GameObject coin = null;
     private Transform playerTransform;
     private float distanteToPlayer;
     private bool canFall = false;
@@ -67,6 +68,9 @@ public class PlatformController : MonoBehaviour
     private void MakePlatformFall()
     {
         rb.isKinematic = false;
+
+        if (coin != null)
+            coin.GetComponent<Rigidbody>().isKinematic = false;
 
         SingleInstanceManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
         SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Remove(this);
@@ -113,8 +117,7 @@ public class PlatformController : MonoBehaviour
         spawnPosition.y += coinYOffset;
 
         // Spawn coin and set as child of the current platform
-        GameObject coin = Instantiate(SingleInstanceManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
-        coin.transform.SetParent(transform);
+        coin = Instantiate(SingleInstanceManager.WorldObjects.coinPrefab, spawnPosition, Quaternion.identity);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -128,4 +131,6 @@ public class PlatformController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
             canFall = true;
     }
+
+    private void OnDestroy() => Destroy(coin);
 }

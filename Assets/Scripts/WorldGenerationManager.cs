@@ -21,8 +21,6 @@ public class WorldGenerationManager : MonoBehaviour
     [Space, Header("Coins settings")]
     [SerializeField]
     private GameObject coinPrefab;
-    [SerializeField]
-    private GameObject coinParticlesPrefab;
 
     private int generatedPlatformsCount = 0;  // Counter for generated platforms
 
@@ -35,12 +33,7 @@ public class WorldGenerationManager : MonoBehaviour
         SingleInstanceManager.WorldObjects.instanciatedPlatforms.Clear();
         SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Clear();
 
-        // Initialize coin and particles references
-        GameObject particles = Instantiate(coinParticlesPrefab);
-        ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
-
-        SingleInstanceManager.WorldObjects.coinParticlesPrefab = particles;
-        SingleInstanceManager.WorldObjects.coinParticleSystem = particleSystem;
+        // Initialize coin reference
         SingleInstanceManager.WorldObjects.coinPrefab = coinPrefab;
     }
 
