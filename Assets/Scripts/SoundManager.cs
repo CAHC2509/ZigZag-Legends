@@ -5,13 +5,29 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    [Header("Audio settings")]
+    [Header("General settings")]
     [SerializeField]
     private AudioMixer audioMixer;
+
+    [Header("FX settings")]
+    [SerializeField]
+    private AudioSource coinSFX;
 
     private const string MASTER_VOLUME_NAME = "masterVolume";
     private const string SFX_VOLUME_NAME = "musicVolume";
     private const string MUSIC_VOLUME_NAME = "SFXVolume";
+
+    public static SoundManager instance;
+
+    private void Awake() => instance = this;
+
+    #region SFX
+
+    public void PlayCoinSFX() => coinSFX?.Play();
+
+    #endregion
+
+    #region Audio settings
 
     /// <summary>
     /// Set a new float value for the master volume
@@ -30,4 +46,6 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     /// <param name="value">New value</param>
     public void ChangeSFXVolume(float value) => audioMixer.SetFloat(SFX_VOLUME_NAME, value);
+
+    #endregion
 }

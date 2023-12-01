@@ -14,6 +14,8 @@ public class CoinController : MonoBehaviour
         {
             SingleInstanceManager.Managers.pointsManager.AddPoints();
 
+            SoundManager.instance.PlayCoinSFX();
+
             coinAnimator.SetTrigger("Collected");
         }
     }
