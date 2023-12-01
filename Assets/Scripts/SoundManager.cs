@@ -9,7 +9,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioMixer audioMixer;
 
-    [Header("FX settings")]
+    [Space, Header("Music settings")]
+    [SerializeField]
+    private AudioSource menuMusicSource;
+    [SerializeField]
+    private AudioSource bucleMusicSource;
+
+    [Space, Header("FX settings")]
     [SerializeField]
     private AudioSource coinSFX;
 
@@ -17,9 +23,26 @@ public class SoundManager : MonoBehaviour
     private const string SFX_VOLUME_NAME = "musicVolume";
     private const string MUSIC_VOLUME_NAME = "SFXVolume";
 
+    private bool inMatch = false;
+
     public static SoundManager instance;
 
     private void Awake() => instance = this;
+
+    private void Update()
+    {
+        if (!inMatch)
+        {
+            if (!menuMusicSource.isPlaying && !bucleMusicSource.isPlaying)
+                bucleMusicSource.gameObject.SetActive(true);
+        }
+    }
+
+    #region Music
+
+    public void ChangeInMatchState(bool state) => inMatch = state;
+
+    #endregion
 
     #region SFX
 
