@@ -17,6 +17,8 @@ public class SoundManager : MonoBehaviour
 
     [Space, Header("FX settings")]
     [SerializeField]
+    private AudioSource clickSFX;
+    [SerializeField]
     private AudioSource coinSFX;
 
     private const string MASTER_VOLUME_NAME = "masterVolume";
@@ -45,6 +47,8 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region SFX
+
+    public void PlayClickSFX() => clickSFX?.Play();
 
     public void PlayCoinSFX() => coinSFX?.Play();
 
