@@ -9,6 +9,8 @@ public static class PlayerPrefsUtility
     private const string HIGHSCOREKEY = "PlayerHighScore";
     private const string CARSELECTEDKEY = "CarSelected";
 
+    #region Player releated functions
+
     /// <summary>
     /// Add more points to the existing in PlayerPrefs
     /// </summary>
@@ -18,8 +20,6 @@ public static class PlayerPrefsUtility
         pointsToAdd += GetPlayerPoints();
         SetPlayerPoints(pointsToAdd);
     }
-
-    #region Player releated functions
 
     /// <summary>
     /// Set a new points value and saves it in PlayerPrefs

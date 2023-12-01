@@ -42,4 +42,9 @@ public class GameManager : MonoBehaviour
     /// Restart the current scene
     /// </summary>
     public void RestartScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+
+    /// <summary>
+    /// Close the game
+    /// </summary>
+    public void CloseGame() => Application.Quit();
 }
