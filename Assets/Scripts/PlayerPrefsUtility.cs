@@ -19,6 +19,8 @@ public static class PlayerPrefsUtility
         SetPlayerPoints(pointsToAdd);
     }
 
+    #region Player releated functions
+
     /// <summary>
     /// Set a new points value and saves it in PlayerPrefs
     /// </summary>
@@ -42,6 +44,10 @@ public static class PlayerPrefsUtility
     /// </summary>
     /// <returns>Player's high score</returns>
     public static int GetHighScore() => PlayerPrefs.GetInt(HIGHSCOREKEY, 0);
+
+    #endregion
+
+    #region Cars releated functions
 
     /// <summary>
     /// Set a new car selected index and saves it in PlayerPrefs
@@ -82,4 +88,20 @@ public static class PlayerPrefsUtility
     /// <param name="key">Car name</param>
     /// <returns>0 for revealed, 1 for unrevealed</returns>
     public static bool GetCarRevealedState(string key) => PlayerPrefs.GetInt(key) == 1;
+
+    #endregion
+
+    #region Settings releated functions
+
+    /// <summary>
+    /// Set a new volume value and saves it in PlayerPrefs
+    /// </summary>
+    public static void SetVolume(string key, float value) => PlayerPrefs.SetFloat(key, value);
+
+    /// <summary>
+    /// Get the volume value from PlayerPrefs
+    /// </summary>
+    public static float GetVolume (string key) => PlayerPrefs.GetFloat(key, -10f);
+
+    #endregion
 }
