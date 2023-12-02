@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -13,6 +11,8 @@ public class CoinController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SingleInstanceManager.Managers.pointsManager.AddPoints();
+
+            ScoreManager.pointsCollected++;
 
             SoundManager.instance.PlayCoinSFX();
 

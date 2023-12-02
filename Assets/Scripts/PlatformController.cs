@@ -74,7 +74,8 @@ public class PlatformController : MonoBehaviour
 
         SingleInstanceManager.WorldObjects.instanciatedPlatforms.Remove(gameObject);
         SingleInstanceManager.WorldObjects.instanciatedPlatformControllers.Remove(this);
-        SingleInstanceManager.Managers.highScoreManager.UpdateActualScore();
+        
+        ScoreManager.instance.UpdateCurrentScore();
 
         backBlock.SetActive(false); // Disable back block for a better effect
 
