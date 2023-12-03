@@ -15,3 +15,4 @@ MonoBehaviour:
   carName: Godzilla
   price: 1
   unlocked: 0
+  revealed: 0
