@@ -24,6 +24,8 @@ public class SoundManager : MonoBehaviour
 
     [Space, Header("FX settings")]
     [SerializeField]
+    private AudioSource tapSFX;
+    [SerializeField]
     private AudioSource clickSFX;
     [SerializeField]
     private AudioSource coinSFX;
@@ -72,6 +74,8 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region SFX
+
+    public void PlayTapSFX() => tapSFX?.Play();
 
     public void PlayClickSFX() => clickSFX?.Play();
 

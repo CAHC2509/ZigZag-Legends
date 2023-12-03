@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
             SingleInstanceManager.Player.cameraColorChanger.ChangeColorChangeAllowedState(true);
             ChangeWheelsActiveState(true);
         }
+
+        SoundManager.instance.PlayTapSFX();
     }
 
     private void ChangeDirection()
