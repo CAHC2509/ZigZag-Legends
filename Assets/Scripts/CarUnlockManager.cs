@@ -19,6 +19,7 @@ public class CarUnlockManager : MonoBehaviour
         if (playerPoints > carData.price)
         {
             SingleInstanceManager.Managers.pointsManager.ReducePoints(carData.price);
+            unlockableCar.RevealCar();
             unlockableCar.UnlockCar();
 
             onCarPurchaseCompleted.Invoke();

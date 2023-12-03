@@ -11,6 +11,10 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     private Button _showAdButton;
     [SerializeField]
     string _androidAdUnitId = "Rewarded_Android";
+    [SerializeField]
+    private bool disableOnLoadFailed = false;
+
+    private bool adLoaded = false;
 
     private string _adUnitId = null; // This will remain null for unsupported platforms
 
@@ -29,22 +33,25 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         if (_showAdButton == null)
             _showAdButton = gameObject.GetComponent<Button>();
 
-        // Disable the button until the ad is ready to show:
-        _showAdButton.interactable = false;
+        // Disable the button if the ad was not loaded
+        if (!adLoaded && disableOnLoadFailed)
+            gameObject.SetActive(false);
+        else
+            _showAdButton.interactable = adLoaded;
     }
 
     // Call this public method when you want to get an ad ready to show.
     public void LoadAd()
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        Debug.Log("Loading Ad: " + _adUnitId);
+        Debug.Log("Loading Ad: " + transform.name);
         Advertisement.Load(_adUnitId, this);
     }
 
     // If the ad successfully loads, add a listener to the button and enable it:
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        Debug.Log("Ad Loaded: " + adUnitId);
+        Debug.Log("Ad Loaded: " + transform.name);
 
         if (adUnitId.Equals(_adUnitId))
         {
@@ -52,6 +59,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
             _showAdButton.onClick.AddListener(ShowAd);
             // Enable the button for users to click:
             _showAdButton.interactable = true;
+
+            adLoaded = true;
         }
     }
 
@@ -83,6 +92,10 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
     {
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error} - {message}");
+
+        if (disableOnLoadFailed)
+            gameObject.SetActive(false);
+
         // Use the error details to determine whether to try to load another ad.
     }
 
