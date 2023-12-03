@@ -811,6 +811,7 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     UNet: 1
+    Unity Ads: 1
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -825,11 +826,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 9e8d6aee-a1c5-4563-9a16-e3873e2e669b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: ZigZag Legends
+  organizationId: unity_99cfe2d57a062d396348
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

@@ -13,9 +13,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pointsCollectedText;
     [SerializeField] private Color newRecordColor;
 
-    [Space, Header("Others")]
-    [SerializeField] private GameObject doublePointsButton;
-
     private Color textsDefaultColor;
     private int currentScore = 0;
     private bool newRecord;
@@ -87,7 +84,6 @@ public class ScoreManager : MonoBehaviour
         }
 
         pointsCollectedText.color = newRecordColor;
-        doublePointsButton.SetActive(false);
     }
 
     /// <summary>
