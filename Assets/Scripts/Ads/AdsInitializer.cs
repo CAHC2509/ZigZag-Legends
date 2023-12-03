@@ -8,6 +8,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     [SerializeField]
     private List<RewardedAdsButton> rewardedAdsButtons;
     [SerializeField]
+    private InterstitialAds interstitialAds;
+    [SerializeField]
     private Transform doublePointsButton;
     [SerializeField]
     private Transform doublePointsButtonParent;
@@ -37,13 +39,14 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
             Advertisement.Initialize(_gameId, _testMode, this);
     }
 
-
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
 
         foreach (RewardedAdsButton button in rewardedAdsButtons)
             button.LoadAd();
+
+        interstitialAds.LoadAd();
 
         doublePointsButton.SetParent(doublePointsButtonParent);
     }

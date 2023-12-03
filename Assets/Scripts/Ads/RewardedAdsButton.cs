@@ -12,8 +12,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField]
     string _androidAdUnitId = "Rewarded_Android";
 
-
-    string _adUnitId = null; // This will remain null for unsupported platforms
+    private string _adUnitId = null; // This will remain null for unsupported platforms
 
     void Awake()
     {
