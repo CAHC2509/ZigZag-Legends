@@ -43,13 +43,39 @@ public class CarSelectionManager : MonoBehaviour
     private void Start()
     {
         currentCarIndex = PlayerPrefsUtility.GetCarSelectedIndex();
-
         LoadCarsData();
-        ShowLastSelectedCar();
-        UpdateButtonsVisibility();
     }
 
-    private void ShowLastSelectedCar() => menuCars[currentCarIndex].SetActive(true);
+    // Load the data from all the unlockable cars
+    private void LoadCarsData()
+    {
+        foreach (UnlockableCar car in carsUnlockableScripts)
+            car.LoadCarData();
+    }
+
+    // Update the visibility of navigation buttons based on the current car index.
+    private void UpdateButtonsVisibility()
+    {
+        // Left and right buttons
+        leftButton.SetActive(currentCarIndex > 0);
+        rightButton.SetActive(currentCarIndex < menuCars.Count - 1);
+
+        // Lock, select and buy car buttons
+        CarData currentCarData = carsUnlockableScripts[currentCarIndex].GetCarData();
+        selectCarButton.SetActive(currentCarData.unlocked);
+        buyCarButton.SetActive(!currentCarData.unlocked);
+        revealCarButton.SetActive(!currentCarData.revealed && AdsInitializer.adsInitialized);
+        lockImage.SetActive(!currentCarData.unlocked);
+    }
+
+    /// <summary>
+    /// Load the last selected car and update buttons
+    /// </summary>
+    public void ShowLastSelectedCar()
+    {
+        menuCars[currentCarIndex].SetActive(true);
+        UpdateButtonsVisibility();
+    }
 
     /// <summary>
     /// Display the next car in the sequence if available.
@@ -85,23 +111,6 @@ public class CarSelectionManager : MonoBehaviour
 
             UpdateButtonsVisibility();
         }
-    }
-
-    /// <summary>
-    /// Update the visibility of navigation buttons based on the current car index.
-    /// </summary>
-    private void UpdateButtonsVisibility()
-    {
-        // Left and right buttons
-        leftButton.SetActive(currentCarIndex > 0);
-        rightButton.SetActive(currentCarIndex < menuCars.Count - 1);
-
-        // Lock, select and buy car buttons
-        CarData currentCarData = carsUnlockableScripts[currentCarIndex].GetCarData();
-        selectCarButton.SetActive(currentCarData.unlocked);
-        buyCarButton.SetActive(!currentCarData.unlocked);
-        revealCarButton.SetActive(!currentCarData.revealed);
-        lockImage.SetActive(!currentCarData.unlocked);
     }
 
     /// <summary>
@@ -147,15 +156,6 @@ public class CarSelectionManager : MonoBehaviour
     {
         UnlockableCar currentCar = carsUnlockableScripts[currentCarIndex];
         SingleInstanceManager.Managers.carUnlockManager.RequestCarPurchase(currentCar.GetCarData(), currentCar);
-    }
-
-    /// <summary>
-    /// Load the data from all the unlockable cars
-    /// </summary>
-    private void LoadCarsData()
-    {
-        foreach (UnlockableCar car in carsUnlockableScripts)
-            car.LoadCarData();
     }
 
     /// <summary>
