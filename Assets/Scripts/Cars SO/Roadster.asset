@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Roadster
   m_EditorClassIdentifier: 
   carName: Roadster
-  price: 1
+  price: 125
   unlocked: 0
+  revealed: 0

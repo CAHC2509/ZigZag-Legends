@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Godzilla
   m_EditorClassIdentifier: 
   carName: Godzilla
-  price: 1
+  price: 200
   unlocked: 0
   revealed: 0

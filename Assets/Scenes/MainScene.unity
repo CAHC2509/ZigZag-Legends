@@ -10333,11 +10333,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984168815}
   m_CullTransparentMesh: 1
---- !u!1 &987187029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1334124873760418051, guid: 00e2bdf389a70da4b9b08b50f83e5b92, type: 3}
-  m_PrefabInstance: {fileID: 2110053913}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &987187030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1334124873760847139, guid: 00e2bdf389a70da4b9b08b50f83e5b92, type: 3}
@@ -17122,7 +17117,6 @@ MonoBehaviour:
   - {fileID: 259925977}
   - {fileID: 1839886802}
   - {fileID: 1350910082}
-  - {fileID: 987187029}
   buyPopUp: {fileID: 1295668938}
   popUpText: {fileID: 1482586794}
   selectCarButton: {fileID: 543169063}
@@ -17137,7 +17131,6 @@ MonoBehaviour:
   - {fileID: 1139739181}
   - {fileID: 561998635}
   - {fileID: 1733882015}
-  - {fileID: 2110053914}
   spawnPoint: {fileID: 1933480228}
   inGameCars:
   - {fileID: 9049235932812351666, guid: 1cf338d28821964458b5ca571f0cc455, type: 3}
@@ -17147,7 +17140,6 @@ MonoBehaviour:
   - {fileID: 7285072085954420916, guid: 9711906fe8d42f74ba23ef34fb05377f, type: 3}
   - {fileID: 7687279201677187417, guid: e96bbe3e1d9e50049b17f485938ce88c, type: 3}
   - {fileID: 4843814228776943529, guid: 7b947dc55e152704886d0b73dc2addf3, type: 3}
-  - {fileID: 1334124873760418051, guid: c4ca71ea1f07d5d46afe0198412c722b, type: 3}
   onCarSelected:
     m_PersistentCalls:
       m_Calls:
@@ -21391,17 +21383,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -4660578837615726892, guid: 00e2bdf389a70da4b9b08b50f83e5b92, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00e2bdf389a70da4b9b08b50f83e5b92, type: 3}
---- !u!114 &2110053914 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -1514990284264971010, guid: 00e2bdf389a70da4b9b08b50f83e5b92, type: 3}
-  m_PrefabInstance: {fileID: 2110053913}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987187029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792c2542e1f174e409f8f8a4ac76ec41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2111654238
 GameObject:
   m_ObjectHideFlags: 0

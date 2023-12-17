@@ -132,7 +132,7 @@ public class CarSelectionManager : MonoBehaviour
         int carPrice = carsUnlockableScripts[currentCarIndex].GetCarData().price;
 
         // Show popup
-        popUpText.text = $"Buy {carName}\nfor {carPrice}?";
+        popUpText.text = $"Buy {carName}\nfor {carPrice} points?";
         buyPopUp.SetActive(true);
 
         lockImage.SetActive(false);
