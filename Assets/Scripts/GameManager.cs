@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Gameplay events settings")]
     [Space, SerializeField]
+    private UnityEvent onPlayerStartMoving;
+    [Space, SerializeField]
     private UnityEvent onPlayerDeath;
 
     private void Awake()
@@ -22,6 +24,11 @@ public class GameManager : MonoBehaviour
     /// Destroy the current car selected for the player
     /// </summary>
     public void DestroyCurrentPlayer() => Destroy(SingleInstanceManager.Player.playerController.gameObject);
+
+    /// <summary>
+    /// Executes some custom events (called when the player start moving)
+    /// </summary>
+    public void PlayerStartMoving() => onPlayerStartMoving?.Invoke();
 
     /// <summary>
     /// Executes some custom events (called when the player falls)
