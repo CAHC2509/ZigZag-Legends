@@ -25,11 +25,15 @@ public class CameraFollow : MonoBehaviour
             // Calculate the desired camera position based on the target's position and offset.
             Vector3 desiredPosition = target.position + offset;
 
-            // Smoothly move the camera towards the desired position.
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 5f);
+            // Adjust the interpolation speed based on your preferences.
+            float interpolationSpeed = 10f;
 
-            // Make the camera look at the target.
-            transform.LookAt(target);
+            // Smoothly move the camera towards the desired position.
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * interpolationSpeed);
+
+            // Make the camera look at the target only if necessary.
+            if (Vector3.Distance(transform.position, desiredPosition) > 0.001f)
+                transform.LookAt(target);
         }
     }
 
